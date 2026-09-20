@@ -3,70 +3,334 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>くじやまフィールド | 合同会社くじやま</title>
+  <title>合同会社くじやま | KUJIYAMA FIELD</title>
+  <meta name="description" content="岩手県久慈市。植物栽培・原木きのこ・アウトドアフィールドの創造。合同会社くじやま公式ポータル。">
+
+  <!-- Google Fonts: 高級感のある英字セリフ＋洗練された日本語サンセリフ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Sans+JP:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
-    /* 全体基本スタイル */
+    :root {
+      --bg-dark: #080607;
+      --bg-gradient: radial-gradient(circle at 80% 20%, #4a0d13 0%, #1a0608 45%, #080607 90%);
+      --accent-red: #c92a3a;
+      --accent-crimson: #801019;
+      --text-ivory: #f7f4ed;
+      --text-muted: #b8b1a5;
+      --glass-bg: rgba(22, 14, 16, 0.65);
+      --glass-border: rgba(201, 42, 58, 0.22);
+      --card-glow: 0 12px 35px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(201, 42, 58, 0.08);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.6;
-      color: #333333;
-      background-color: #f7f9f6;
-    }
-    header {
-      background-color: #2d5a27;
-      color: #ffffff;
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.05em;
-    }
-    header p {
-      font-size: 1rem;
-      opacity: 0.9;
-    }
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .card {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    .card h2 {
-      color: #2d5a27;
-      border-bottom: 2px solid #e0ebd8;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.85rem;
-      color: #777777;
+      background-color: var(--bg-dark);
+      background-image: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text-ivory);
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.8;
+      letter-spacing: 0.04em;
+      overflow-x: hidden;
+      min-height: 100vh;
     }
 
-    /* --- パスワード保護オーバーレイ用スタイル --- */
+    /* --- ゆらゆらフロートアニメーション --- */
+    @keyframes floatSlow1 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(0.3deg); }
+    }
+    @keyframes floatSlow2 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-11px) rotate(-0.3deg); }
+    }
+    @keyframes floatSlow3 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(0.2deg); }
+    }
+
+    .float-1 { animation: floatSlow1 7s ease-in-out infinite; }
+    .float-2 { animation: floatSlow2 9s ease-in-out infinite; }
+    .float-3 { animation: floatSlow3 8s ease-in-out infinite; }
+
+    /* --- ヒーローエリア（動画対応） --- */
+    .hero-container {
+      position: relative;
+      height: 90vh;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    /* 動画背景（mp4等をセットすれば全画面再生） */
+    .hero-video-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      object-fit: cover;
+      opacity: 0.35; /* 動画の明度調整 */
+      filter: saturate(1.2) contrast(1.1);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(128, 16, 25, 0.25) 0%, rgba(8, 6, 7, 0.88) 85%);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      padding: 0 1.5rem;
+      max-width: 900px;
+    }
+
+    .hero-sub {
+      font-family: 'Cinzel', serif;
+      color: var(--accent-red);
+      font-size: 1.1rem;
+      letter-spacing: 0.3em;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--text-ivory) 40%, #e29ca3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      padding: 0.9rem 2.8rem;
+      border: 1px solid var(--accent-red);
+      background: linear-gradient(135deg, rgba(201, 42, 58, 0.3) 0%, rgba(128, 16, 25, 0.6) 100%);
+      color: var(--text-ivory);
+      text-decoration: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      border-radius: 50px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(201, 42, 58, 0.4);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(201, 42, 58, 0.7);
+      background: linear-gradient(135deg, rgba(201, 42, 58, 0.5) 0%, rgba(128, 16, 25, 0.9) 100%);
+    }
+
+    /* --- メインコンテンツレイアウト --- */
+    main {
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      font-family: 'Cinzel', serif;
+      color: var(--accent-red);
+      font-size: 0.9rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--text-ivory);
+      letter-spacing: 0.08em;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
+      background: var(--accent-red);
+    }
+
+    /* グラスカードコンテナ */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .glass-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--card-glow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(201, 42, 58, 0.6);
+      box-shadow: 0 15px 40px rgba(201, 42, 58, 0.25), inset 0 0 20px rgba(201, 42, 58, 0.15);
+    }
+
+    .card-num {
+      font-family: 'Cinzel', serif;
+      color: var(--accent-red);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      opacity: 0.85;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      margin-bottom: 1.2rem;
+      color: var(--text-ivory);
+      letter-spacing: 0.05em;
+    }
+
+    .card-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* 会社概要テーブル */
+    .profile-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      box-shadow: var(--card-glow);
+      backdrop-filter: blur(12px);
+      margin-bottom: 5rem;
+    }
+
+    .profile-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .profile-table tr {
+      border-bottom: 1px solid rgba(201, 42, 58, 0.15);
+    }
+
+    .profile-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .profile-table th {
+      text-align: left;
+      padding: 1.2rem 1rem 1.2rem 0;
+      font-weight: 400;
+      color: #e29ca3;
+      width: 25%;
+      font-size: 0.95rem;
+      vertical-align: top;
+    }
+
+    .profile-table td {
+      padding: 1.2rem 0;
+      color: var(--text-ivory);
+      font-weight: 300;
+      font-size: 0.95rem;
+    }
+
+    /* ポータルリンク（SNS・ショップ） */
+    .portal-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .link-box {
+      padding: 1rem 2.5rem;
+      border: 1px solid var(--glass-border);
+      background: rgba(30, 16, 20, 0.5);
+      border-radius: 10px;
+      color: var(--text-ivory);
+      text-decoration: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .link-box:hover {
+      border-color: var(--accent-red);
+      background: rgba(201, 42, 58, 0.2);
+      transform: translateY(-4px);
+    }
+
+    footer {
+      border-top: 1px solid rgba(201, 42, 58, 0.15);
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* --- パスワード保護オーバーレイ --- */
     #lock-screen {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: #1e2922;
-      color: #ffffff;
+      background: radial-gradient(circle at center, #2e080b 0%, #080607 90%);
+      color: var(--text-ivory);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -75,57 +339,87 @@
       padding: 1.5rem;
       text-align: center;
     }
+
     .lock-box {
-      background: #28392f;
-      padding: 2.5rem 2rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      max-width: 400px;
+      background: rgba(20, 12, 14, 0.85);
+      border: 1px solid rgba(201, 42, 58, 0.35);
+      padding: 3rem 2.2rem;
+      border-radius: 16px;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(201, 42, 58, 0.1);
+      backdrop-filter: blur(15px);
+      max-width: 420px;
       width: 100%;
     }
+
     .lock-box h2 {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
+      font-family: 'Cinzel', serif;
+      color: var(--text-ivory);
+      font-size: 1.4rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.6rem;
     }
+
     .lock-box p {
       font-size: 0.9rem;
-      color: #b0c2b6;
-      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
     }
+
     .lock-input {
       width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1px solid #486352;
-      border-radius: 6px;
-      background: #1a251e;
-      color: #ffffff;
+      padding: 0.85rem 1.2rem;
+      border: 1px solid rgba(201, 42, 58, 0.4);
+      border-radius: 8px;
+      background: rgba(10, 6, 8, 0.8);
+      color: var(--text-ivory);
       font-size: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       outline: none;
+      transition: border-color 0.2s;
     }
+
     .lock-input:focus {
-      border-color: #52a468;
+      border-color: var(--accent-red);
+      box-shadow: 0 0 10px rgba(201, 42, 58, 0.4);
     }
+
     .lock-btn {
       width: 100%;
-      padding: 0.75rem;
-      background-color: #3b7b4a;
-      color: #ffffff;
+      padding: 0.85rem;
+      background: linear-gradient(135deg, #c92a3a 0%, #801019 100%);
+      color: var(--text-ivory);
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 1rem;
-      font-weight: bold;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       cursor: pointer;
-      transition: background-color 0.2s;
+      box-shadow: 0 4px 15px rgba(201, 42, 58, 0.35);
+      transition: all 0.2s;
     }
+
     .lock-btn:hover {
-      background-color: #49995c;
+      filter: brightness(1.15);
+      transform: translateY(-1px);
     }
+
     #lock-error {
-      color: #ff7b7b;
+      color: #ff5e6c;
       font-size: 0.85rem;
-      margin-top: 0.8rem;
+      margin-top: 1rem;
       display: none;
+    }
+
+    @media (max-width: 768px) {
+      .profile-table th, .profile-table td {
+        display: block;
+        width: 100%;
+        padding: 0.5rem 0;
+      }
+      .profile-table th {
+        color: var(--accent-red);
+        padding-top: 1rem;
+      }
     }
   </style>
 </head>
@@ -134,42 +428,129 @@
   <!-- パスワード認証オーバーレイ -->
   <div id="lock-screen">
     <div class="lock-box">
-      <h2>閲覧制限</h2>
-      <p>このサイトを閲覧するには合言葉（パスワード）を入力してください。</p>
-      <input type="password" id="password-input" class="lock-input" placeholder="合言葉を入力" autofocus>
-      <button onclick="checkPassword()" class="lock-btn">サイトを表示する</button>
+      <h2>KUJIYAMA FIELD</h2>
+      <p>PRIVATE ACCESS ONLY</p>
+      <input type="password" id="password-input" class="lock-input" placeholder="パスワードを入力" autofocus>
+      <button onclick="checkPassword()" class="lock-btn">ENTER</button>
       <p id="lock-error">パスワードが正しくありません。</p>
     </div>
   </div>
 
-  <!-- サイト本体コンテンツ -->
-  <header>
-    <h1>合同会社くじやま</h1>
-    <p>植物栽培・原木きのこ・アウトドアフィールドの創造</p>
-  </header>
+  <!-- ヒーローエリア -->
+  <div class="hero-container">
+    <!-- 
+      【動画背景にする場合】
+      下の video タグのコメントを解除し、srcにお好きな動画（mp4）のURLを指定するだけで動画背景になります。
+    -->
+    <!--
+    <video class="hero-video-bg" autoplay muted loop playsinline>
+      <source src="./movie.mp4" type="video/mp4">
+    </video>
+    -->
+    <div class="hero-overlay"></div>
+    <div class="hero-content float-1">
+      <p class="hero-sub">Botanical &amp; Wild Earth</p>
+      <h1 class="hero-title">自然の鼓動を、<br>暮らしの美学へ。</h1>
+      <p class="hero-desc">
+        岩手県久慈市。手つかずの自然が織りなす山野草・花卉の栽培から、原木きのこの育成、そして大地を五感で味わうアウトドアフィールドの創造まで。
+      </p>
+      <a href="#about" class="hero-btn">DISCOVER MORE</a>
+    </div>
+  </div>
 
   <main>
-    <section class="card">
-      <h2>くじやまフィールドについて</h2>
-      <p>自然の恵みを生かした花卉・山野草の栽培、原木栽培、アウトドアフィールドの整備を行っています。現在、本格オープンに向けてサイトを準備中です。</p>
-    </section>
+    <!-- 事業紹介（フローティングカード） -->
+    <div class="section-header">
+      <span class="section-tag">Our Projects</span>
+      <h2 class="section-title">事業案内</h2>
+    </div>
 
-    <section class="card">
-      <h2>事業案内</h2>
-      <p>ドライフラワー・クラフト素材の栽培、原木シイタケ等の育成、およびフィールド運営を展開してまいります。</p>
-    </section>
+    <div class="cards-grid">
+      <!-- カード1（float-1） -->
+      <div class="glass-card float-1">
+        <div class="card-num">01</div>
+        <h3 class="card-title">ボタニカル＆花卉栽培</h3>
+        <p class="card-text">
+          アナベル、スモークツリー、各種ハーブなどのドライフラワー素材の栽培。山野に自生する葛やクマヤナギなどの自然蔓を活かしたオリジナルリースベースやスワッグの制作・展開。
+        </p>
+      </div>
+
+      <!-- カード2（float-2） -->
+      <div class="glass-card float-2">
+        <div class="card-num">02</div>
+        <h3 class="card-title">原木きのこ栽培</h3>
+        <p class="card-text">
+          久慈の豊かな森林資源を活かした原木シイタケ、マイタケ、ナメコの育成。じっくりと時間をかけて菌糸を巡らせ、原木ならではの力強い旨味と香りを届けます。
+        </p>
+      </div>
+
+      <!-- カード3（float-3） -->
+      <div class="glass-card float-3">
+        <div class="card-num">03</div>
+        <h3 class="card-title">くじやまフィールド</h3>
+        <p class="card-text">
+          広大な山林を開拓し、自然の植生を体感できるアウトドア・バーベキュー場を整備。日常の喧騒を離れ、森の息吹と採れたての素材をダイレクトに楽しむ拠点を創造します。
+        </p>
+      </div>
+    </div>
+
+    <!-- 会社概要（float-2） -->
+    <div class="section-header" id="about">
+      <span class="section-tag">About Company</span>
+      <h2 class="section-title">会社概要</h2>
+    </div>
+
+    <div class="profile-card float-2">
+      <table class="profile-table">
+        <tbody>
+          <tr>
+            <th>会社名</th>
+            <td>合同会社くじやま (Kujiyama LLC)</td>
+          </tr>
+          <tr>
+            <th>代表社員</th>
+            <td>梶谷 真一</td>
+          </tr>
+          <tr>
+            <th>フィールド拠点</th>
+            <td>岩手県久慈市夏井町鳥谷</td>
+          </tr>
+          <tr>
+            <th>事業内容</th>
+            <td>
+              花卉・山野草の栽培およびドライフラワー・リース素材の加工・販売<br>
+              原木きのこ（シイタケ・マイタケ・ナメコ）の栽培・販売<br>
+              アウトドアフィールド・バーベキュー場の企画・運営
+            </td>
+          </tr>
+          <tr>
+            <th>お問い合わせ</th>
+            <td>info@kujiyama.com</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- リンクポータル -->
+      <div class="portal-links">
+        <a href="mailto:info@kujiyama.com" class="link-box">
+          <span>CONTACT / お問い合わせ</span>
+        </a>
+        <!-- インスタグラムのURLが決まったら href を書き換えてください -->
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="link-box">
+          <span>INSTAGRAM</span>
+        </a>
+      </div>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 合同会社くじやま All Rights Reserved.</p>
+    <p>&copy; 2026 KUJIYAMA LLC. All Rights Reserved.</p>
   </footer>
 
   <!-- 認証スクリプト -->
   <script>
-    // ここでパスワード（合言葉）を指定します（お好きな文字列に変更してください）
     const CORRECT_PW = "kujiyama2026";
 
-    // 既に認証済みかチェック
     if (sessionStorage.getItem("kujiyama_authorized") === "true") {
       document.getElementById("lock-screen").style.display = "none";
     }
@@ -179,22 +560,18 @@
       const errorMsg = document.getElementById("lock-error");
 
       if (input === CORRECT_PW) {
-        // 正解の場合はフラグを保存してロック画面を非表示にする
         sessionStorage.setItem("kujiyama_authorized", "true");
         document.getElementById("lock-screen").style.display = "none";
       } else {
-        // 不正解の場合はエラー表示
         errorMsg.style.display = "block";
       }
     }
 
-    // Enterキーでも送信できるようにする
     document.getElementById("password-input").addEventListener("keypress", function(event) {
       if (event.key === "Enter") {
         checkPassword();
       }
     });
   </script>
-
 </body>
 </html>
