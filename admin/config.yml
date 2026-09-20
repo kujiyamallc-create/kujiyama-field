@@ -1,0 +1,38 @@
+backend:
+  name: github
+  repo: kujiyamallc-create/kujiyama-field
+  branch: main
+  base_url: https://decap-auth.kujiyama-llc.workers.dev
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "services"
+    label: "事業・サービス内容"
+    files:
+      - file: "data/services.json"
+        label: "サービス一覧"
+        name: "services_list"
+        fields:
+          - label: "サービス項目"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "タイトル", name: "title", widget: "string" }
+              - { label: "説明文", name: "description", widget: "text" }
+              - { label: "画像", name: "image", widget: "image", required: false }
+
+  - name: "gallery"
+    label: "ギャラリー・活動写真"
+    files:
+      - file: "data/gallery.json"
+        label: "写真一覧"
+        name: "gallery_list"
+        fields:
+          - label: "写真リスト"
+            name: "photos"
+            widget: "list"
+            fields:
+              - { label: "キャプション", name: "caption", widget: "string" }
+              - { label: "画像", name: "image", widget: "image" }
