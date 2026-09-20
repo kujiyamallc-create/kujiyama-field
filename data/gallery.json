@@ -1,0 +1,29 @@
+{
+  "photos": [
+    {
+      "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80",
+      "caption": "KUJI MOUNTAIN FIELD / 久慈の山林拠点",
+      "size": "large"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80",
+      "caption": "WILD BOTANICAL / 豊かな自生植物",
+      "size": "standard"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1470058869958-2a77ade41c02?auto=format&fit=crop&w=800&q=80",
+      "caption": "DRIED FLOWERS / アナベル・ハーブ",
+      "size": "standard"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80",
+      "caption": "LOG CULTIVATION / 原木シイタケ",
+      "size": "standard"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+      "caption": "SEASONAL VIEW / 季節の移ろい",
+      "size": "standard"
+    }
+  ]
+}
