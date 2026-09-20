@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>くじやまフィールド | 岩手県久慈市 自然と暮らすポータル</title>
+  <meta name="description" content="岩手県久慈市の山林を開拓し、アウトドアBBQ、山採り植物やドライフラワー等の天然素材、原木きのこ栽培を展開する「くじやまフィールド」の公式ポータルサイトです。">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- 基本リセット & 共通変数 --- */
+    :root {
+      --color-primary: #2d4a3e;     /* 深い森林の緑 */
+      --color-primary-light: #446857;
+      --color-accent: #c47c47;      /* 木・大地の茶オレンジ */
+      --color-bg: #fbfaf6;          /* やわらかな生成り色 */
+      --color-card-bg: #ffffff;
+      --color-text: #2c2c2c;
+      --color-text-muted: #666666;
+      --color-border: #e6e4dc;
+      --font-serif: 'Noto Serif JP', serif;
+      --font-sans: 'Noto Sans JP', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    /* --- ヘッダー --- */
+    header {
+      background-color: rgba(251, 250, 246, 0.95);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .site-logo {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      letter-spacing: 0.05em;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--color-primary);
+    }
+
+    /* --- ヒーローセクション --- */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      background: radial-gradient(circle at center, #f4f1e8 0%, var(--color-bg) 70%);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .hero-catch {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      line-height: 1.4;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* --- セクション共通 --- */
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      text-align: center;
+      font-size: 1.75rem;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 40px;
+      display: block;
+      font-weight: 700;
+    }
+
+    /* --- 3大事業カード（ポータル） --- */
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .field-card {
+      background: var(--color-card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+    }
+
+    .card-badge {
+      background-color: var(--color-primary);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      display: inline-block;
+      width: fit-content;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .card-body {
+      padding: 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .btn {
+      display: inline-block;
+      text-align: center;
+      background-color: var(--color-primary);
+      color: #fff;
+      padding: 11px 20px;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background-color: var(--color-primary-light);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--color-accent);
+      color: #fff;
+    }
+
+    /* --- 会社概要・インフォメーション --- */
+    .company-section {
+      background-color: #f3f0e6;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .company-table {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .company-table th, .company-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .company-table th {
+      width: 30%;
+      text-align: left;
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .company-table td {
+      color: var(--color-text);
+    }
+
+    /* --- フッター --- */
+    footer {
+      background-color: var(--color-primary);
+      color: #e2e8e5;
+      padding: 40px 0 25px;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    footer p {
+      margin-top: 10px;
+      opacity: 0.8;
+    }
+
+    /* --- レスポンシブ --- */
+    @media (max-width: 768px) {
+      .hero-catch {
+        font-size: 1.65rem;
+      }
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+      .company-table th, .company-table td {
+        display: block;
+        width: 100%;
+        padding: 6px 0;
+      }
+      .company-table th {
+        border-bottom: none;
+        padding-top: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+    <div class="container header-inner">
+      <div class="site-logo">くじやまフィールド</div>
+      <nav>
+        <ul>
+          <li><a href="#about">概要</a></li>
+          <li><a href="#activities">活動</a></li>
+          <li><a href="#company">運営情報</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- メインビジュアル -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-catch">自然の恵みを、<br>遊ぶ・育てる・味わう。</h1>
+      <p class="hero-sub">岩手県久慈市の自然豊かな山林を開拓し、アウトドア・天然素材・食の体験を創り出すポータルフィールドです。</p>
+    </div>
+  </section>
+
+  <!-- 3大活動紹介（ポータル） -->
+  <section id="activities">
+    <div class="container">
+      <h2 class="section-title">フィールドの活動</h2>
+      <span class="section-subtitle">Our Activities</span>
+
+      <div class="field-grid">
+        
+        <!-- くじやま天然素材 -->
+        <article class="field-card">
+          <div class="card-body">
+            <span class="card-badge">Botanical & Materials</span>
+            <h3 class="card-title">くじやま天然素材</h3>
+            <p class="card-desc">
+              山林に自生する樹木や山野草の苗木、葛やサルトリイバラの自然木リース土台、ドライフラワー素材を育成・採取してお届けしています。
+            </p>
+            <a href="#" class="btn btn-outline">オンラインショップを見る</a>
+          </div>
+        </article>
+
+        <!-- くじやまBBQ -->
+        <article class="field-card">
+          <div class="card-body">
+            <span class="card-badge">Outdoor & BBQ</span>
+            <h3 class="card-title">くじやまBBQ</h3>
+            <p class="card-desc">
+              鳥谷（とや）の山林プライベート空間で楽しむアウトドアバーベキュー場。地元食材や自然の空気をそのまま楽しむくつろぎの場を準備中。
+            </p>
+            <a href="#" class="btn btn-outline">利用案内・予約について</a>
+          </div>
+        </article>
+
+        <!-- くじやまきのこ -->
+        <article class="field-card">
+          <div class="card-body">
+            <span class="card-badge">Forest Foods</span>
+            <h3 class="card-title">くじやまきのこ</h3>
+            <p class="card-desc">
+              山の原木を使い、久慈の寒暖差と澄んだ水でじっくり育てる原木椎茸・舞茸・ナメコ。自然本来の強い旨味と香りをお届けします。
+            </p>
+            <a href="#" class="btn btn-outline">収穫・直売について</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 運営情報 -->
+  <section id="company" class="company-section">
+    <div class="container">
+      <h2 class="section-title">運営元情報</h2>
+      <span class="section-subtitle">Company Info</span>
+
+      <table class="company-table">
+        <tbody>
+          <tr>
+            <th>団体名</th>
+            <td>合同会社くじやま</td>
+          </tr>
+          <tr>
+            <th>拠点</th>
+            <td>岩手県久慈市夏井町鳥谷</td>
+          </tr>
+          <tr>
+            <th>事業内容</th>
+            <td>山林の開拓・アウトドアフィールド運営、花卉・樹木等の苗木及びクラフト素材の栽培・販売、原木きのこ栽培</td>
+          </tr>
+          <tr>
+            <th>お問い合わせ</th>
+            <td>info@kujiyama.com</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer>
+    <div class="container">
+      <div class="site-logo" style="color: #fff; margin-bottom: 8px;">くじやまフィールド</div>
+      <p>&copy; 合同会社くじやま All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
