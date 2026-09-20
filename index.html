@@ -6,7 +6,7 @@
   <title>合同会社くじやま | KUJIYAMA FIELD</title>
   <meta name="description" content="岩手県久慈市。植物栽培・原木きのこ・アウトドアフィールドの創造。合同会社くじやま公式ポータル。">
 
-  <!-- Google Fonts: 縦長極太ゴシック Oswald を追加 -->
+  <!-- Google Fonts: 縦長極太ゴシック Oswald を採用 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Noto+Sans+JP:wght@300;400;500;700&family=Oswald:wght@600;700&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
       --serif: 'Shippori Mincho', 'Noto Sans JP', serif;
       --sans: 'Noto Sans JP', sans-serif;
       --latin: 'Cormorant Garamond', 'Shippori Mincho', serif;
-      --brand: 'Oswald', 'Noto Sans JP', sans-serif; /* 縦長極太ゴシック */
+      --brand: 'Oswald', 'Noto Sans JP', sans-serif;
       --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     html[data-theme="deep"] {
@@ -91,7 +91,7 @@
     }
     header, .hero, main, footer { position: relative; z-index: 1; }
 
-    /* ---------- ロゴ刷新（ヘッダー：太い縦長ゴシック） ---------- */
+    /* ---------- ロゴ刷新（ヘッダー） ---------- */
     .brand-logo {
       display: inline-flex;
       align-items: center;
@@ -124,7 +124,7 @@
       font-family: var(--brand);
       font-size: 1.55rem;
       font-weight: 700;
-      letter-spacing: 0.08em; /* 縦長フォントを際立たせる */
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
     .brand-sub {
@@ -194,10 +194,10 @@
     .hero-btn svg { transition: transform 0.4s var(--ease); }
     .hero-btn:hover svg { transform: translateX(5px); }
 
-    .ridges { position: absolute; left: 0; right: 0; bottom: -1px; height: 36vh; min-height: 230px; z-index: 2; pointer-events: none; }
-    .ridges svg { position: absolute; left: -3%; bottom: 0; width: 106%; height: 100%; will-change: transform; }
-    .ridges .r1 { fill: rgba(16, 32, 14, 0.30); }
-    .ridges .r2 { fill: rgba(14, 27, 12, 0.55); }
+    .ridges { position: absolute; left: 0; right: 0; bottom: -1px; height: 38vh; min-height: 240px; z-index: 2; pointer-events: none; }
+    .ridges svg { position: absolute; left: -2%; bottom: 0; width: 104%; height: 100%; will-change: transform; }
+    .ridges .r1 { fill: rgba(16, 32, 14, 0.35); }
+    .ridges .r2 { fill: rgba(14, 27, 12, 0.62); }
     .ridges .r3 { fill: var(--bg); transition: fill 1s; }
 
     .scroll-cue { position: absolute; left: clamp(1.5rem, 5vw, 4rem); bottom: 2.4rem; z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; font-family: var(--latin); font-style: italic; font-size: 0.95rem; color: var(--moss-deep); writing-mode: vertical-rl; letter-spacing: 0.25em; }
@@ -268,7 +268,7 @@
     .card-title { font-family: var(--serif); font-size: 1.45rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1.5; color: var(--moss-deep); position: relative; }
     .card-text { color: var(--muted); font-size: 0.94rem; line-height: 2; position: relative; }
 
-    /* ---------- 写真ギャラリーセクション ---------- */
+    /* ---------- 写真ギャラリー ---------- */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -347,13 +347,13 @@
     .link-box:hover { color: var(--btn-text); border-color: var(--btn-bg); }
     .link-box:hover::before { transform: scaleX(1); }
 
-    /* ---------- フッター（縦長極太ゴシック KUJIYAMA） ---------- */
+    /* ---------- フッター ---------- */
     footer { background: linear-gradient(180deg, #2a4123 0%, #1c2b19 100%); text-align: center; padding: 5rem 1.5rem 3rem; color: #b9c6ab; font-size: 0.82rem; letter-spacing: 0.1em; overflow: hidden; position: relative; }
     .foot-word {
       --fx: 50%; --fy: 50%;
       font-family: var(--brand);
       font-weight: 700;
-      font-size: clamp(4rem, 19vw, 16rem); /* 縦長フォントに合わせてスケールアップ */
+      font-size: clamp(4rem, 19vw, 16rem);
       line-height: 0.85;
       letter-spacing: 0.04em;
       margin-bottom: 2.2rem;
@@ -373,7 +373,7 @@
     .toast { position: fixed; left: 50%; bottom: calc(2rem + env(safe-area-inset-bottom, 0px)); z-index: 1000001; transform: translate(-50%, 30px); opacity: 0; pointer-events: none; padding: 0.8rem 1.6rem; border-radius: 60px; font-family: var(--serif); font-size: 0.9rem; letter-spacing: 0.14em; background: #f2f1e2; color: #2f4426; border: 1px solid #5a7a3a; box-shadow: 0 10px 40px rgba(20, 40, 15, 0.3); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); }
     .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
-    /* ---------- パスワード保護（縦長極太ゴシック） ---------- */
+    /* ---------- パスワード保護 ---------- */
     #lock-screen {
       position: fixed; inset: 0; z-index: 999999; padding: 1.5rem; display: flex; justify-content: center; align-items: center; text-align: center;
       background: radial-gradient(ellipse at 78% 0%, #557a3d 0%, #2f4a29 42%, #1c2d19 100%);
@@ -463,7 +463,7 @@
   <canvas id="shade" aria-hidden="true"></canvas>
   <div class="grain" aria-hidden="true"></div>
 
-  <!-- ナビゲーションバー（縦長極太ゴシック KUJIYAMA） -->
+  <!-- ナビゲーションバー -->
   <header class="nav-header" id="nav">
     <a href="#" class="brand-logo" id="logo">
       <svg class="brand-crest" viewBox="0 0 48 48" aria-hidden="true">
@@ -514,6 +514,7 @@
       </div>
     </div>
 
+    <!-- 赤松の稜線（洗練されたシルエット） -->
     <div class="ridges" aria-hidden="true">
       <svg class="r1" viewBox="0 0 1440 300" preserveAspectRatio="none" data-depth="0.5"><path id="tree1" d=""/></svg>
       <svg class="r2" viewBox="0 0 1440 300" preserveAspectRatio="none" data-depth="1"><path id="tree2" d=""/></svg>
@@ -532,9 +533,31 @@
     </div>
 
     <div class="cards-grid">
-      <!-- 事業1 -->
+      <!-- 1: 左＝くじやまフィールド（BBQ・アウトドア） -->
       <div class="reveal stair-1" style="--d:0s">
         <div class="float-1">
+          <article class="modern-card">
+            <div class="card-thumb">
+              <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80" alt="くじやまフィールド" loading="lazy" decoding="async">
+            </div>
+            <div class="card-body">
+              <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+                <path pathLength="1" d="M6 56 L32 10 L58 56 Z"/>
+                <path pathLength="1" d="M32 56 L32 38 M32 38 L23 56 M32 38 L41 56"/>
+                <path pathLength="1" d="M2 60 H62"/>
+              </svg>
+              <h3 class="card-title">くじやまフィールド</h3>
+              <p class="card-text">
+                広大な山林を開拓し、自然の植生をそのまま体感できるアウトドア・バーベキュー場を整備。日常を離れ、森の息吹と採れたての素材を直に楽しむフィールドを創出します。
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- 2: 中央＝ボタニカル＆花卉栽培 -->
+      <div class="reveal stair-2" style="--d:.15s">
+        <div class="float-2">
           <article class="modern-card">
             <div class="card-thumb">
               <img src="https://images.unsplash.com/photo-1508615039623-a25605d2b022?auto=format&fit=crop&w=800&q=80" alt="ボタニカル＆花卉栽培" loading="lazy" decoding="async">
@@ -555,9 +578,9 @@
         </div>
       </div>
 
-      <!-- 事業2 -->
-      <div class="reveal stair-2" style="--d:.15s">
-        <div class="float-2">
+      <!-- 3: 右＝原木きのこ栽培 -->
+      <div class="reveal stair-3" style="--d:.3s">
+        <div class="float-3">
           <article class="modern-card">
             <div class="card-thumb">
               <img src="https://images.unsplash.com/photo-1543158266-0066955047b1?auto=format&fit=crop&w=800&q=80" alt="原木きのこ栽培" loading="lazy" decoding="async">
@@ -573,28 +596,6 @@
               <h3 class="card-title">原木きのこ栽培</h3>
               <p class="card-text">
                 久慈の豊かな森林資源を活かした原木シイタケ、マイタケ、ナメコの育成。じっくりと時間をかけて菌糸を巡らせ、原木栽培ならではの芳醇な香りと力強い旨味を届けます。
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <!-- 事業3 -->
-      <div class="reveal stair-3" style="--d:.3s">
-        <div class="float-3">
-          <article class="modern-card">
-            <div class="card-thumb">
-              <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80" alt="くじやまフィールド" loading="lazy" decoding="async">
-            </div>
-            <div class="card-body">
-              <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
-                <path pathLength="1" d="M6 56 L32 10 L58 56 Z"/>
-                <path pathLength="1" d="M32 56 L32 38 M32 38 L23 56 M32 38 L41 56"/>
-                <path pathLength="1" d="M2 60 H62"/>
-              </svg>
-              <h3 class="card-title">くじやまフィールド</h3>
-              <p class="card-text">
-                広大な山林を開拓し、自然の植生をそのまま体感できるアウトドア・バーベキュー場を整備。日常を離れ、森の息吹と採れたての素材を直に楽しむフィールドを創出します。
               </p>
             </div>
           </article>
@@ -681,7 +682,7 @@
     </div>
   </main>
 
-  <!-- フッター（縦長極太ゴシック KUJIYAMA） -->
+  <!-- フッター -->
   <footer id="footer">
     <div class="foot-word" id="footWord" aria-hidden="true">KUJIYAMA</div>
     <p>&copy; 2026 KUJIYAMA LLC. All Rights Reserved.</p>
@@ -717,7 +718,7 @@
       root.style.setProperty('--sun', sun);
     })();
 
-   /* ============ 赤松（アカマツ）の樹林シルエット生成 ============ */
+    /* ============ 赤松（アカマツ）の洗練されたシルエット生成 ============ */
     function mulberry(a) { 
       return function () { 
         a |= 0; a = a + 0x6D2B79F5 | 0; 
@@ -727,77 +728,67 @@
       }; 
     }
 
-    // 扁平で不規則な松の葉冠（雲状のクラスタ）をパスに追加する関数
-    function addPineCluster(d, cx, cy, rx, ry, seedRand) {
+    // 繊細でフラットに重なり合う松傘（クラスタ）の描画
+    function pineCrown(cx, cy, rx, ry, seedR) {
       const f = n => n.toFixed(1);
-      const points = 7;
-      let path = '';
-      for (let i = 0; i <= points; i++) {
-        const ang = (i / points) * Math.PI * 2;
-        const distR = 0.8 + seedRand() * 0.4;
-        const px = cx + Math.cos(ang) * rx * distR;
-        const py = cy + Math.sin(ang) * ry * distR;
-        if (i === 0) {
-          path += ` M${f(px)} ${f(py)}`;
-        } else {
-          const prevAng = ((i - 0.5) / points) * Math.PI * 2;
-          const cpx = cx + Math.cos(prevAng) * rx * 1.15;
-          const cpy = cy + Math.sin(prevAng) * ry * 1.15;
-          path += ` Q${f(cpx)} ${f(cpy)} ${f(px)} ${f(py)}`;
-        }
-      }
-      return d + path + ' Z';
+      const topY = cy - ry * 0.45;
+      const botY = cy + ry * 0.55;
+      const leftX = cx - rx;
+      const rightX = cx + rx;
+      const tilt = (seedR() - 0.5) * (rx * 0.18);
+      // 上面は緩やかなドーム、下面は軽く波打つ雲状
+      return ` M${f(leftX)} ${f(cy + tilt)} C${f(cx - rx * 0.5)} ${f(topY + tilt * 0.5)} ${f(cx + rx * 0.5)} ${f(topY - tilt * 0.5)} ${f(rightX)} ${f(cy - tilt)} C${f(cx + rx * 0.4)} ${f(botY - tilt * 0.3)} ${f(cx - rx * 0.4)} ${f(botY + tilt * 0.3)} ${f(leftX)} ${f(cy + tilt)} Z`;
     }
 
-    function pineLine(seed, base, minH, maxH, minW, maxW) {
+    function generatePineForest(seed, base, minH, maxH, minW, maxW) {
       const r = mulberry(seed);
-      let x = -40;
+      let x = -50;
       const f = n => n.toFixed(1);
       
-      // 稜線の地面ベースパス
-      let groundPath = `M-40 ${base}`;
-      let crownPaths = '';
+      let ground = `M-50 ${base}`;
+      let foliage = '';
 
-      while (x < 1480) {
+      while (x < 1490) {
         const w = minW + r() * (maxW - minW);
         const h = minH + r() * (maxH - minH);
-        const lean = (r() - 0.5) * (w * 0.55); // 赤松特有の幹のうねり・傾き
-        const treeTopX = x + w / 2 + lean;
-        const treeTopY = base - h;
-        const trunkW = 3.5 + r() * 3.5;
+        const sway = (r() - 0.5) * (w * 0.5); // 幹の傾き
+        const topX = x + w * 0.5 + sway;
+        const topY = base - h;
+        const trunkW = 3 + r() * 3.5;
 
-        // 幹の描画（地面から樹冠へ向かう太い幹）
-        const midY = base - h * 0.5;
-        const midX = x + w / 2 + lean * 0.35 + (r() - 0.5) * 8;
-        crownPaths += ` M${f(x + w / 2 - trunkW)} ${base} Q${f(midX - trunkW * 0.7)} ${f(midY)} ${f(treeTopX - trunkW * 0.4)} ${f(treeTopY + 12)} L${f(treeTopX + trunkW * 0.4)} ${f(treeTopY + 12)} Q${f(midX + trunkW * 0.7)} ${f(midY)} ${f(x + w / 2 + trunkW)} ${base} Z`;
+        // 幹の曲がり（ベジェ曲線）
+        const bendX = x + w * 0.5 + sway * 0.4 + (r() - 0.5) * 12;
+        const bendY = base - h * 0.55;
 
-        // 赤松特有の多層段になった横広がりの樹冠（雲のような松傘）
-        // 主頭頂部
-        crownPaths = addPineCluster(crownPaths, treeTopX, treeTopY, w * 0.42, h * 0.18, r);
-        
-        // 2段目の枝葉（左右どちらかに大きくせり出す）
-        const sub1X = treeTopX + (r() > 0.5 ? 1 : -1) * (w * 0.32);
-        const sub1Y = treeTopY + h * 0.26;
-        crownPaths = addPineCluster(crownPaths, sub1X, sub1Y, w * 0.36, h * 0.16, r);
+        foliage += ` M${f(x + w * 0.5 - trunkW)} ${base} Q${f(bendX - trunkW * 0.6)} ${f(bendY)} ${f(topX - trunkW * 0.3)} ${f(topY + 10)} L${f(topX + trunkW * 0.3)} ${f(topY + 10)} Q${f(bendX + trunkW * 0.6)} ${f(bendY)} ${f(x + w * 0.5 + trunkW)} ${base} Z`;
 
-        // 3段目の枝葉（低層の棚枝）
-        if (h > (minH + maxH) * 0.45) {
-          const sub2X = treeTopX + (sub1X > treeTopX ? -1 : 1) * (w * 0.38);
-          const sub2Y = treeTopY + h * 0.46;
-          crownPaths = addPineCluster(crownPaths, sub2X, sub2Y, w * 0.34, h * 0.14, r);
+        // 枝葉クラスタ：最頂部
+        foliage += pineCrown(topX, topY, w * 0.46, h * 0.16, r);
+
+        // 2段目（主枝）
+        const side1 = r() > 0.5 ? 1 : -1;
+        const b1X = topX + side1 * (w * 0.36);
+        const b1Y = topY + h * 0.28;
+        foliage += pineCrown(b1X, b1Y, w * 0.38, h * 0.14, r);
+
+        // 3段目（逆側の低層枝）
+        if (h > (minH + maxH) * 0.48) {
+          const b2X = topX - side1 * (w * 0.32);
+          const b2Y = topY + h * 0.46;
+          foliage += pineCrown(b2X, b2Y, w * 0.34, h * 0.12, r);
         }
 
-        groundPath += ` Q${f(x + w * 0.5)} ${f(base - 4 + r() * 8)} ${f(x + w)} ${base}`;
-        x += w * (0.62 + r() * 0.35); // ランダムな間隔で自然な林間を形成
+        ground += ` Q${f(x + w * 0.5)} ${f(base - 3 + r() * 6)} ${f(x + w)} ${base}`;
+        x += w * (0.65 + r() * 0.38);
       }
 
-      groundPath += ` L1480 300 L-40 300 Z`;
-      return groundPath + crownPaths;
+      ground += ` L1490 300 L-50 300 Z`;
+      return ground + foliage;
     }
 
-    // 奥の赤松林（緻密・遠景）と手前の赤松林（大きく躍動的・近景）
-    $('#tree1').setAttribute('d', pineLine(42, 245, 65, 130, 45, 80));
-    $('#tree2').setAttribute('d', pineLine(88, 275, 95, 175, 65, 115));
+    // 奥の赤松（密度高め・繊細）と手前の赤松（大きくダイナミック）
+    $('#tree1').setAttribute('d', generatePineForest(55, 240, 65, 125, 45, 80));
+    $('#tree2').setAttribute('d', generatePineForest(108, 272, 95, 175, 70, 115));
 
     /* ============ トースト ============ */
     const toastEl = $('#toast');     let toastTimer;     function toast(msg) {       toastEl.textContent = msg; toastEl.classList.add('show');       clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2600);     }      /* ============ 文字分割 ============ */     function splitChars(rootEl) {       let i = 0;       (function walk(node) {         [...node.childNodes].forEach(n => {           if (n.nodeType === 3) {             const frag = document.createDocumentFragment();             [...n.textContent].forEach(c => {               if (c.trim() === '') { frag.append(c); return; }               const w = document.createElement('span'); w.className = 'cw'; w.setAttribute('aria-hidden', 'true');               const s = document.createElement('span'); s.className = 'ch'; s.textContent = c; s.style.setProperty('--i', i++);               w.append(s); frag.append(w);             });             n.replaceWith(frag);           } else if (n.nodeType === 1 && n.tagName !== 'BR') walk(n);         });       })(rootEl);     }     $$('.split').forEach(el => { el.setAttribute('aria-label', el.textContent.trim()); splitChars(el); });
