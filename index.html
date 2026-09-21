@@ -1,1604 +1,361 @@
 <!DOCTYPE html>
-<html lang="ja" data-theme="day">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>KUJIYAMA FIELD | 自然と大地を五感で味わうフィールド</title>
-  <meta name="description" content="岩手県久慈市夏井町鳥谷。広大な山林で展開する「くじやまキャンプ＆BBQ」「くじやまフラワー＆ボタニカル」「くじやま原木きのこ」。くじやまフィールド公式ポータル。">
-
-  <!-- Google Fonts: 縦長極太ゴシック Oswald を採用 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Noto+Sans+JP:wght@300;400;500;700&family=Oswald:wght@600;700&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
-  
-  <!-- ファビコン -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>くじやまフィールド | 合同会社くじやま</title>
   <style>
-    /* ============================================================
-       Design tokens
-       ============================================================ */
-    :root {
-      --bg: #f2f1e2;
-      --bg2: #e4e9d6;
-      --text: #22301e;
-      --muted: #59684f;
-      --moss: #5a7a3a;
-      --moss-deep: #2f4426;
-      --moss-dark: #1f2f1c;
-      --sun: #f2dd8e;
-      --line: rgba(47, 68, 38, 0.18);
-      --line-strong: rgba(47, 68, 38, 0.42);
-      --card: rgba(255, 255, 248, 0.65);
-      --nav-bg: rgba(242, 241, 226, 0.88);
-      --btn-bg: #4b6a30;
-      --btn-text: #f6f3e0;
-      --h-text: #f6f3e0;
-      --h-muted: #cfd8c0;
-      --spot: rgba(243, 221, 140, 0.4);
-      --serif: 'Shippori Mincho', 'Noto Sans JP', serif;
-      --sans: 'Noto Sans JP', sans-serif;
-      --latin: 'Cormorant Garamond', 'Shippori Mincho', serif;
-      --brand: 'Oswald', 'Noto Sans JP', sans-serif;
-      --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* 基本リセット & 共通スタイル */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    html[data-theme="deep"] {
-      --bg: #17241a;
-      --bg2: #1d2e20;
-      --text: #e9e8d3;
-      --muted: #a4b399;
-      --moss: #9dbf70;
-      --moss-deep: #c6dc9d;
-      --line: rgba(233, 232, 211, 0.16);
-      --line-strong: rgba(233, 232, 211, 0.36);
-      --card: rgba(233, 232, 211, 0.055);
-      --nav-bg: rgba(23, 36, 26, 0.9);
-      --btn-bg: #8fb262;
-      --btn-text: #14210f;
-      --spot: rgba(190, 220, 130, 0.22);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body {
-      background: var(--bg); color: var(--text);
-      font-family: var(--sans); line-height: 1.9; letter-spacing: 0.04em;
-      overflow-x: hidden; min-height: 100vh;
-      transition: background-color 1s ease, color 1s ease;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333333;
+      background-color: #f7f9f6;
     }
-    body.locked { overflow: hidden; }
-    ::selection { background: var(--moss); color: #fff; }
-    a { color: inherit; }
-    :focus-visible { outline: 2px solid var(--moss); outline-offset: 4px; }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
-    /* ---------- カスタムカーソル ---------- */
-    @media (hover: hover) and (pointer: fine) {
-      body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: none; }
-      body.has-cursor input { cursor: text; }
+    /* ヘッダー */
+    header {
+      background-color: #2d5a27;
+      color: #ffffff;
+      padding: 3.5rem 1rem;
+      text-align: center;
     }
-    .c-dot, .c-ring { position: fixed; top: 0; left: 0; z-index: 1000000; pointer-events: none; display: none; mix-blend-mode: difference; }
-    body.has-cursor .c-dot, body.has-cursor .c-ring { display: block; }
-    .c-dot i, .c-ring i { display: block; border-radius: 50%; }
-    .c-dot i { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: #fff; }
-    .c-ring i { width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1px solid rgba(255, 255, 255, 0.85); transition: transform 0.45s var(--ease), background 0.3s; }
-    .c-ring.hover i { transform: scale(1.9); background: rgba(255, 255, 255, 0.16); }
-    .c-ring.down i { transform: scale(0.6); }
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+    header p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
 
-    /* ---------- 常設レイヤー ---------- */
-    #progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: linear-gradient(90deg, var(--moss), var(--sun)); transform-origin: 0 50%; transform: scaleX(0); z-index: 900; }
-    #shade { position: fixed; left: -30px; top: -30px; width: calc(100% + 60px); height: calc(100% + 60px); z-index: 5; pointer-events: none; filter: blur(9px); }
-    #motes { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
-    .grain {
-      position: fixed; inset: 0; z-index: 6; pointer-events: none; opacity: 0.05; mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .2  0 0 0 0 .25  0 0 0 0 .15  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    /* メインコンテナ */
+    main {
+      max-width: 1000px;
+      margin: 2.5rem auto;
+      padding: 0 1.25rem;
     }
-    header, .hero, main, footer { position: relative; z-index: 1; }
 
-    /* ---------- ロゴ刷新（ヘッダー） ---------- */
-    .brand-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.85rem;
-      text-decoration: none;
-      user-select: none;
-      transition: transform 0.35s var(--ease);
+    /* セクション共通 */
+    .section-title {
+      font-size: 1.6rem;
+      color: #2d5a27;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 0.5rem;
     }
-    .brand-logo:hover {
-      transform: translateY(-1px);
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background-color: #8fae85;
+      border-radius: 2px;
     }
-    .brand-crest {
-      width: 32px;
-      height: 32px;
-      flex-shrink: 0;
-      color: currentColor;
+
+    /* 事業カードグリッド（3カラム） */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
     }
-    .brand-crest path, .brand-crest circle {
-      stroke: currentColor;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .brand-text-wrap {
+    .service-card {
+      background: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
       display: flex;
       flex-direction: column;
-      line-height: 1.1;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .brand-text {
-      font-family: var(--brand);
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
-    .brand-sub {
-      font-family: var(--sans);
-      font-size: 0.65rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      opacity: 0.8;
-      margin-top: 3px;
-    }
-
-    /* ---------- ナビゲーション ---------- */
-    .nav-header {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 800;
-      padding: 0.9rem 2.2rem; padding-top: calc(0.9rem + env(safe-area-inset-top, 0px));
-      display: flex; justify-content: space-between; align-items: center;
-      color: var(--h-text); background: transparent; border-bottom: 1px solid transparent;
-      transition: transform 0.6s var(--ease), background 0.5s, color 0.5s, border-color 0.5s;
-    }
-    .nav-header.solid { background: var(--nav-bg); color: var(--text); border-bottom-color: var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-    .nav-header.hide { transform: translateY(-101%); }
-    .nav-links a { position: relative; text-decoration: none; font-size: 0.88rem; font-weight: 500; margin-left: 2.2rem; padding: 0.3rem 0; letter-spacing: 0.08em; }
-    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 0.5s var(--ease); }
-    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
-
-    /* ---------- ヒーロー ---------- */
-    .hero {
-      position: relative; min-height: 100vh; min-height: 100svh;
-      display: flex; align-items: center; overflow: hidden; padding: 8rem 0 12rem;
-      background: linear-gradient(180deg, #223720 0%, #33502c 46%, #4b6c38 100%);
-    }
-    .sunglow { position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(60vmax 46vmax at 88% -8%, var(--sun), transparent 62%); opacity: 0.5; animation: glow 11s ease-in-out infinite alternate; }
-    @keyframes glow { to { opacity: 0.72; transform: scale(1.06); } }
-    .shafts { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-    .shafts i {
-      position: absolute; top: -25%; height: 140%; transform-origin: 50% 0; mix-blend-mode: screen;
-      background: linear-gradient(180deg, var(--sun) 0%, transparent 78%); filter: blur(26px); opacity: 0.1;
-      transform: rotate(var(--rot)); animation: shaft 10s ease-in-out infinite alternate;
-    }
-    @keyframes shaft { 0% { opacity: 0.08; transform: rotate(var(--rot)) scaleX(0.9); } 100% { opacity: 0.3; transform: rotate(calc(var(--rot) + 3deg)) scaleX(1.18); } }
-    .hero-overlay { position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse at 20% 110%, rgba(15, 28, 13, 0.55), transparent 60%); }
-
-    .hero-parallax { position: relative; z-index: 3; width: 100%; }
-    .hero-content { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem); }
-    .hero-sub { display: inline-flex; align-items: center; gap: 1rem; font-family: var(--latin); font-style: italic; font-weight: 600; font-size: clamp(1.1rem, 2vw, 1.5rem); color: #efe3a4; letter-spacing: 0.08em; margin-bottom: 2rem; }
-    .hero-sub::before { content: ''; width: 3.2rem; height: 1px; background: #efe3a4; }
-    .hero-title { font-family: var(--serif); font-weight: 800; font-size: clamp(2.7rem, 8.5vw, 7.5rem); line-height: 1.24; letter-spacing: 0.06em; margin-bottom: 2.6rem; color: var(--h-text); text-shadow: 0 4px 40px rgba(10, 24, 8, 0.35); }
-    .hero-title em { font-style: normal; display: inline-block; padding-left: 0.8em; }
-
-    .cw { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.06em 0 0.12em; margin: -0.06em 0 -0.12em; }
-    .ch { display: inline-block; transform: translateY(118%) rotate(7deg); transform-origin: 0 100%; transition: transform 1.1s var(--ease); transition-delay: calc(var(--i) * 65ms + 0.25s); }
-    .split.in .ch { transform: none; }
-
-    .hero-desc { font-size: clamp(0.95rem, 1.4vw, 1.08rem); color: var(--h-muted); max-width: 38em; margin-bottom: 3rem; }
-    .hero-in { opacity: 0; transform: translateY(26px); transition: opacity 1s var(--ease) var(--d, 0s), transform 1s var(--ease) var(--d, 0s); }
-    body.ready .hero-in { opacity: 1; transform: none; }
-
-    .hero-btn-group { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; }
-    .hero-btn {
-      display: inline-flex; align-items: center; gap: 1rem; padding: 1.05rem 2.6rem; color: var(--h-text); text-decoration: none;
-      font-size: 0.92rem; font-weight: 500; letter-spacing: 0.18em; border: 1px solid rgba(246, 243, 224, 0.55); border-radius: 60px;
-      position: relative; overflow: hidden; isolation: isolate; transition: transform 0.35s var(--ease), color 0.4s, border-color 0.4s;
-    }
-    .hero-btn::before { content: ''; position: absolute; inset: 0; z-index: -1; background: #f2e6a8; transform: translateY(101%); border-radius: 50% 50% 0 0 / 100% 100% 0 0; transition: transform 0.6s var(--ease), border-radius 0.6s var(--ease); }
-    .hero-btn:hover { color: #1f2f1c; border-color: #f2e6a8; }
-    .hero-btn:hover::before { transform: none; border-radius: 0; }
-    .hero-btn.btn-sub { border-color: rgba(246, 243, 224, 0.3); background: rgba(246, 243, 224, 0.08); }
-
-    .ridges { position: absolute; left: 0; right: 0; bottom: -1px; height: 38vh; min-height: 240px; z-index: 2; pointer-events: none; }
-    .ridges svg { position: absolute; left: -2%; bottom: 0; width: 104%; height: 100%; will-change: transform; }
-    .ridges .r1 { fill: rgba(16, 32, 14, 0.35); }
-    .ridges .r2 { fill: rgba(14, 27, 12, 0.62); }
-    .ridges .r3 { fill: var(--bg); transition: fill 1s; }
-
-    .scroll-cue { position: absolute; left: clamp(1.5rem, 5vw, 4rem); bottom: 2.4rem; z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; font-family: var(--latin); font-style: italic; font-size: 0.95rem; color: var(--moss-deep); writing-mode: vertical-rl; letter-spacing: 0.25em; }
-    .scroll-cue::after { content: ''; width: 1px; height: 64px; background: linear-gradient(var(--moss), transparent); transform-origin: top; animation: cue 2.4s var(--ease) infinite; }
-    @keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
-
-    /* ---------- メインセクション ---------- */
-    main { max-width: 1240px; margin: 0 auto; padding: 4rem clamp(1.5rem, 5vw, 4rem) 6rem; }
-    .section-header { margin-bottom: 3.6rem; display: flex; align-items: baseline; gap: 1.6rem; flex-wrap: wrap; scroll-margin-top: 90px; }
-    .section-tag { font-family: var(--latin); font-style: italic; font-weight: 600; font-size: 1.25rem; color: var(--moss); letter-spacing: 0.08em; }
-    .section-title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; letter-spacing: 0.1em; line-height: 1.4; color: var(--moss-deep); }
-    .section-header .rule { flex: 1 1 80px; height: 1px; background: var(--line-strong); transform: scaleX(0); transform-origin: 0 50%; transition: transform 1.6s var(--ease) 0.3s; align-self: center; min-width: 60px; }
-    .section-header.in .rule { transform: scaleX(1); }
-
-    .reveal { opacity: 0; transform: translateY(46px); transition: opacity 1.1s var(--ease) var(--d, 0s), transform 1.1s var(--ease) var(--d, 0s); }
-    .reveal.in { opacity: 1; transform: none; }
-
-    /* ---------- くじやまとは (About Field) ---------- */
-    .concept-panel {
-      position: relative;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: clamp(2.5rem, 5vw, 4.5rem);
-      margin-bottom: 8rem;
-      box-shadow: 0 18px 40px -22px rgba(47, 68, 38, 0.35);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 3.5rem;
-      align-items: center;
-    }
-    @media (max-width: 960px) {
-      .concept-panel { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
-    .concept-lead {
-      font-family: var(--serif);
-      font-size: clamp(1.4rem, 2.8vw, 2rem);
-      font-weight: 700;
-      line-height: 1.7;
-      color: var(--moss-deep);
-      margin-bottom: 1.8rem;
-    }
-    .concept-p {
-      color: var(--muted);
-      font-size: 0.98rem;
-      line-height: 2.1;
-      margin-bottom: 2.2rem;
-    }
-    .open-modal-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-family: var(--serif);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--moss-deep);
-      background: none;
-      border: none;
-      border-bottom: 2px solid var(--moss);
-      padding-bottom: 4px;
-      letter-spacing: 0.12em;
-      cursor: pointer;
-      transition: color 0.3s, border-color 0.3s;
-    }
-    .open-modal-trigger:hover {
-      color: var(--moss);
-      border-color: var(--sun);
-    }
-    .concept-visual {
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      box-shadow: 0 14px 34px -14px rgba(20, 35, 15, 0.4);
-    }
-    .concept-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s var(--ease);
-    }
-    .concept-panel:hover .concept-visual img {
-      transform: scale(1.05);
-    }
-
-    /* ---------- 3つのカテゴリーカード ---------- */
-    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.2rem; align-items: start; margin-bottom: 8rem; }
-    @media (min-width: 960px) {
-      .cards-grid { grid-template-columns: repeat(3, 1fr); padding-bottom: 4rem; }
-      .stair-2 { margin-top: 3rem; }
-      .stair-3 { margin-top: 6rem; }
-    }
-    @keyframes floatGentle1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-    @keyframes floatGentle2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-13px); } }
-    @keyframes floatGentle3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-    .float-1 { animation: floatGentle1 7s ease-in-out infinite; }
-    .float-2 { animation: floatGentle2 8.5s ease-in-out infinite; }
-    .float-3 { animation: floatGentle3 6.5s ease-in-out infinite; }
-
-    .modern-card {
-      --mx: 50%; --my: 50%;
-      position: relative; overflow: hidden; height: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-      padding: 0 0 2.6rem; box-shadow: 0 18px 40px -22px rgba(47, 68, 38, 0.35);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-      transition: transform 0.35s var(--ease), border-color 0.4s; transform-style: preserve-3d; will-change: transform;
-      cursor: pointer;
-    }
-    .modern-card::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(360px circle at var(--mx) var(--my), var(--spot), transparent 65%); opacity: 0; transition: opacity 0.5s; }
-    .modern-card:hover { border-color: var(--moss); }
-    .modern-card:hover::after { opacity: 1; }
-
+    
+    /* カード内画像の自動トリミング枠 */
     .card-thumb {
       width: 100%;
       height: 220px;
+      background-color: #e4ebe4;
       overflow: hidden;
-      position: relative;
-      background: #253823;
     }
     .card-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.8s var(--ease), filter 0.8s;
-      filter: saturate(0.9) brightness(0.95);
+      object-position: center;
     }
-    .modern-card:hover .card-thumb img {
-      transform: scale(1.08);
-      filter: saturate(1.05) brightness(1);
-    }
+
     .card-body {
-      padding: 2rem 2rem 0;
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-tag {
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #2d5a27;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+    .card-body h3 {
+      font-size: 1.25rem;
+      color: #222222;
+      margin-bottom: 0.75rem;
+    }
+    .card-body p {
+      font-size: 0.95rem;
+      color: #555555;
+      line-height: 1.6;
     }
 
-    .icon { width: 50px; height: 50px; color: var(--moss); stroke: currentColor; fill: none; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 1.4rem; overflow: visible; position: relative; }
-    .icon path { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2s cubic-bezier(0.6, 0.1, 0.2, 1) 0.35s; }
-    .reveal.in .icon path { stroke-dashoffset: 0; }
-    .card-cat { font-family: var(--latin); font-style: italic; font-size: 0.9rem; color: var(--moss); margin-bottom: 0.3rem; }
-    .card-title { font-family: var(--serif); font-size: 1.45rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1.5; color: var(--moss-deep); position: relative; }
-    .card-text { color: var(--muted); font-size: 0.93rem; line-height: 2; position: relative; margin-bottom: 1.6rem; }
-
-    .card-cta-hint {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.84rem;
-      font-weight: 700;
-      color: var(--moss-deep);
-      letter-spacing: 0.1em;
-    }
-    .card-cta-hint svg {
-      transition: transform 0.3s var(--ease);
-    }
-    .modern-card:hover .card-cta-hint svg {
-      transform: translateX(5px);
-    }
-
-    /* ---------- 写真ギャラリー ---------- */
+    /* ギャラリーグリッド */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 9rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3.5rem;
     }
     .gallery-item {
-      position: relative;
-      border-radius: 12px;
+      width: 100%;
+      height: 180px;
+      border-radius: 8px;
       overflow: hidden;
-      border: 1px solid var(--line);
-      background: var(--card);
-      box-shadow: 0 16px 36px -20px rgba(47, 68, 38, 0.3);
-      transition: transform 0.45s var(--ease), border-color 0.4s, box-shadow 0.4s;
-    }
-    .gallery-item:hover {
-      transform: translateY(-6px);
-      border-color: var(--moss);
-      box-shadow: 0 24px 45px -18px rgba(47, 68, 38, 0.45);
+      background-color: #e4ebe4;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
     }
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      transition: transform 0.8s var(--ease);
+      object-position: center;
+      transition: transform 0.3s ease;
     }
     .gallery-item:hover img {
-      transform: scale(1.06);
+      transform: scale(1.05);
     }
-    .gallery-caption {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      padding: 1.5rem 1.2rem 0.8rem;
-      background: linear-gradient(180deg, transparent 0%, rgba(20, 34, 18, 0.88) 100%);
-      color: #f6f3e0;
+
+    /* フッター */
+    footer {
+      background-color: #1f361c;
+      color: #d1ded0;
+      text-align: center;
+      padding: 2.5rem 1rem;
       font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.4s var(--ease);
-      pointer-events: none;
-    }
-    .gallery-item:hover .gallery-caption {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .g-w-8 { grid-column: span 8; height: 320px; }
-    .g-w-4 { grid-column: span 4; height: 320px; }
-
-    @media (max-width: 900px) {
-      .g-w-8, .g-w-4 { grid-column: span 6; height: 260px; }
-    }
-    @media (max-width: 600px) {
-      .g-w-8, .g-w-4 { grid-column: span 12; height: 240px; }
+      margin-top: 4rem;
     }
 
-    /* ---------- 運営会社概要 ---------- */
-    .profile-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 2.5rem clamp(1.5rem, 4vw, 3.5rem); margin-bottom: 4rem; box-shadow: 0 18px 40px -22px rgba(47, 68, 38, 0.35); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-    .profile-table { width: 100%; border-collapse: collapse; }
-    .profile-table tr { border-bottom: 1px solid var(--line); transition: background 0.5s; }
-    .profile-table tr:last-child { border-bottom: none; }
-    .profile-table tr:hover { background: linear-gradient(90deg, var(--spot), transparent 70%); }
-    .profile-table th, .profile-table td { opacity: 0; transform: translateX(-24px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
-    .profile-table tr.in th, .profile-table tr.in td { opacity: 1; transform: none; }
-    .profile-table th { text-align: left; padding: 1.5rem 1.5rem 1.5rem 0.5rem; font-family: var(--serif); font-weight: 700; color: var(--moss); width: 24%; font-size: 0.98rem; vertical-align: top; letter-spacing: 0.1em; }
-    .profile-table td { padding: 1.5rem 0.5rem 1.5rem 0; font-size: 0.97rem; line-height: 1.95; }
-
-    .portal-links { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 3rem; padding-bottom: 0.5rem; }
-    .link-box { padding: 0.95rem 2.4rem; border: 1px solid var(--line-strong); border-radius: 60px; color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.1em; display: inline-block; position: relative; overflow: hidden; isolation: isolate; transition: transform 0.35s var(--ease), color 0.4s, border-color 0.4s; }
-    .link-box::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--btn-bg); transform: scaleX(0); transform-origin: left; transition: transform 0.55s var(--ease); }
-    .link-box:hover { color: var(--btn-text); border-color: var(--btn-bg); }
-    .link-box:hover::before { transform: scaleX(1); }
-
-    /* ---------- フッター ---------- */
-    footer { background: linear-gradient(180deg, #2a4123 0%, #1c2b19 100%); text-align: center; padding: 5rem 1.5rem 3rem; color: #b9c6ab; font-size: 0.82rem; letter-spacing: 0.1em; overflow: hidden; position: relative; }
-    .foot-word {
-      --fx: 50%; --fy: 50%;
-      font-family: var(--brand);
-      font-weight: 700;
-      font-size: clamp(3.2rem, 15vw, 13rem);
-      line-height: 0.85;
-      letter-spacing: 0.04em;
-      margin-bottom: 2.2rem;
-      user-select: none;
-      text-transform: uppercase;
-      color: transparent;
-      -webkit-text-stroke: 1.5px rgba(246, 243, 224, 0.4);
-      background: radial-gradient(440px circle at var(--fx) var(--fy), #f5e9ac 0%, #b6cf7c 38%, transparent 72%);
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    .sprout { position: absolute; bottom: 0; width: 30px; height: 36px; pointer-events: none; color: #c9dd93; transform-origin: 50% 100%; animation: sprout 1s var(--ease) both; }
-    .sprout path { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-    @keyframes sprout { from { transform: scale(0); opacity: 0; } 60% { transform: scale(1.2); } to { transform: scale(1); opacity: 1; } }
-
-    /* ---------- トースト ---------- */
-    .toast { position: fixed; left: 50%; bottom: calc(2rem + env(safe-area-inset-bottom, 0px)); z-index: 1000001; transform: translate(-50%, 30px); opacity: 0; pointer-events: none; padding: 0.8rem 1.6rem; border-radius: 60px; font-family: var(--serif); font-size: 0.9rem; letter-spacing: 0.14em; background: #f2f1e2; color: #2f4426; border: 1px solid #5a7a3a; box-shadow: 0 10px 40px rgba(20, 40, 15, 0.3); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); }
-    .toast.show { opacity: 1; transform: translate(-50%, 0); }
-
-    /* ============================================================
-       シネマティック上下スリット開閉 ポップアップ（木漏れ日光芒・追従版）
-       ============================================================ */
-    .shutter-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: clamp(1rem, 4vw, 3rem);
-      pointer-events: none;
-      visibility: hidden;
-      background: rgba(10, 18, 10, 0);
-      backdrop-filter: blur(0px);
-      -webkit-backdrop-filter: blur(0px);
-      transition: background 0.8s ease, backdrop-filter 0.8s ease, visibility 0.8s;
-    }
-    .shutter-modal.active {
-      pointer-events: auto;
-      visibility: visible;
-      background: rgba(10, 18, 10, 0.82);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    /* ウィンドウ本体 */
-    .modal-container {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 840px;
-      max-height: 86vh;
-      overflow-y: auto;
-      border: 1px solid rgba(246, 243, 224, 0.22);
-      border-radius: 14px;
-      padding: clamp(2.2rem, 5vw, 4rem);
-      color: #f6f3e0;
-      box-shadow: 0 40px 90px -15px rgba(0, 0, 0, 0.85);
-
-      /* ベース背景（自然な深緑グラデーション） */
-      background: linear-gradient(180deg, #182a1a 0%, #101c11 100%);
-      
-      /* GPUアクセラレーション */
-      transform: translateZ(0);
-      will-change: clip-path, transform, opacity;
-
-      /* 初期状態：上下中央で畳まれている */
-      clip-path: inset(50% 0% 50% 0% round 14px);
-      opacity: 0;
-      transition: clip-path 0.95s cubic-bezier(0.19, 1, 0.22, 1),
-                  opacity 0.4s ease,
-                  transform 0.95s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-
-    .shutter-modal.active .modal-container {
-      /* 開放状態：上下にパカッと開く */
-      clip-path: inset(0% 0% 0% 0% round 14px);
-      opacity: 1;
-    }
-
-    /* スクロールしても常に右上に追従する木漏れ日の光芒（日差し） */
-    .modal-sunlight-anchor {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      height: 0;
-      margin: 0;
-      padding: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .modal-sunlight {
-      position: absolute;
-      top: -2.2rem;
-      right: -2.2rem;
-      width: 360px;
-      height: 360px;
-      pointer-events: none;
-      filter: blur(22px);
-      opacity: 0.35;
-      mix-blend-mode: screen;
-      /* 右上から左下へ差し込む5本のソフトな光芒ストライプ */
-      background: 
-        radial-gradient(ellipse at 100% 0%, rgba(242, 221, 142, 0.6) 0%, rgba(242, 221, 142, 0.2) 40%, transparent 80%),
-        repeating-linear-gradient(
-          -45deg,
-          rgba(255, 245, 190, 0.35) 0px,
-          rgba(255, 245, 190, 0.35) 12px,
-          transparent 12px,
-          transparent 32px
-        );
-      -webkit-mask-image: radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 80%);
-      mask-image: radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 80%);
-    }
-
-    /* ウィンドウ最上部に固定された洗練のゴールド天面ライン */
-    .modal-container::before {
-      content: '';
-      position: sticky;
-      top: -2.2rem;
-      left: 0;
-      display: block;
-      width: 100%;
-      height: 2px;
-      margin-top: -2.2rem;
-      margin-bottom: 2rem;
-      background: linear-gradient(90deg, transparent 0%, rgba(242, 221, 142, 0.4) 15%, #f2dd8e 50%, rgba(242, 221, 142, 0.4) 85%, transparent 100%);
-      box-shadow: 0 0 12px rgba(242, 221, 142, 0.6);
-      z-index: 20;
-      pointer-events: none;
-    }
-
-    /* 中身の文字・画像も遅れてフワッと浮かび上がるシネマ演出 */
-    .modal-content-wrap > * {
-      position: relative;
-      z-index: 1;
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.6s ease 0.3s, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s;
-    }
-    .shutter-modal.active .modal-content-wrap > * {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 1.6rem;
-      right: 1.6rem;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(246, 243, 224, 0.08);
-      border: 1px solid rgba(246, 243, 224, 0.3);
-      color: #f6f3e0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s, border-color 0.3s;
-      z-index: 105;
-    }
-    .modal-close-btn:hover {
-      background: rgba(246, 243, 224, 0.22);
-      border-color: #f2dd8e;
-      transform: rotate(90deg);
-    }
-
-    .modal-tag {
-      font-family: var(--latin);
-      font-style: italic;
-      color: #efe3a4;
-      font-size: 1.15rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.6rem;
-    }
-    .modal-title {
-      font-family: var(--serif);
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 800;
-      line-height: 1.35;
-      color: #ffffff;
-      margin-bottom: 1.8rem;
-    }
-    .modal-img-wrap {
-      width: 100%;
-      height: 280px;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 2rem;
-      border: 1px solid rgba(246, 243, 224, 0.2);
-    }
-    .modal-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .modal-body-text {
-      color: #d1dcc5;
-      font-size: 1rem;
-      line-height: 2.1;
-      margin-bottom: 2.8rem;
-      white-space: pre-line;
-    }
-    .modal-cta-box {
-      border-top: 1px solid rgba(246, 243, 224, 0.2);
-      padding-top: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .modal-cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 1.1rem 2.6rem;
-      background: #f2e6a8;
-      color: #1a2a18;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      border-radius: 60px;
-      letter-spacing: 0.12em;
-      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-    }
-    .modal-cta-btn:hover {
-      background: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(242, 230, 168, 0.3);
-    }
-
-    /* ---------- パスワード保護 ---------- */
+    /* --- パスワード認証オーバーレイ用スタイル --- */
     #lock-screen {
-      position: fixed; inset: 0; z-index: 999999; padding: 1.5rem; display: flex; justify-content: center; align-items: center; text-align: center;
-      background: radial-gradient(ellipse at 78% 0%, #557a3d 0%, #2f4a29 42%, #1c2d19 100%);
-      clip-path: circle(150% at 50% 50%); transition: clip-path 1.2s cubic-bezier(0.7, 0, 0.2, 1); overflow: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #1e2922;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 999999;
+      padding: 1.5rem;
+      text-align: center;
     }
-    #lock-screen.open { clip-path: circle(0% at 50% 50%); pointer-events: none; }
-    #lock-screen canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .lock-box { position: relative; z-index: 2; width: 100%; max-width: 440px; padding: 3.8rem 2.8rem; color: #f6f3e0; border: 1px solid rgba(246, 243, 224, 0.28); border-radius: 14px; background: rgba(246, 243, 224, 0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    
-    .lock-crest {
-      width: 42px;
-      height: 42px;
-      margin: 0 auto 1.2rem;
-      display: block;
-      color: #efe3a4;
+    .lock-box {
+      background: #28392f;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      width: 100%;
     }
-    .lock-crest path, .lock-crest circle {
-      stroke: currentColor;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
     .lock-box h2 {
-      font-family: var(--brand);
-      font-size: 1.85rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.4rem;
-      font-weight: 700;
-      text-transform: uppercase;
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
     }
-    .lock-box p { font-family: var(--latin); font-style: italic; font-size: 1.05rem; color: #d5ddc6; margin-bottom: 2.2rem; letter-spacing: 0.12em; }
-    .lock-input { width: 100%; padding: 0.9rem 0.2rem; background: transparent; color: #f6f3e0; border: none; border-bottom: 1px solid rgba(246, 243, 224, 0.45); border-radius: 0; font-size: 1rem; margin-bottom: 1.8rem; outline: none; text-align: center; letter-spacing: 0.2em; transition: border-color 0.3s; }
-    .lock-input::placeholder { color: rgba(246, 243, 224, 0.5); letter-spacing: 0.1em; }
-    .lock-input:focus { border-bottom-color: #f2e6a8; }
-    .lock-btn { width: 100%; padding: 0.95rem; background: transparent; color: #f6f3e0; border: 1px solid rgba(246, 243, 224, 0.6); border-radius: 60px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.3em; cursor: pointer; position: relative; overflow: hidden; isolation: isolate; transition: color 0.4s, border-color 0.4s; }
-    .lock-btn::before { content: ''; position: absolute; inset: 0; z-index: -1; background: #f2e6a8; transform: translateY(101%); transition: transform 0.5s var(--ease); }
-    .lock-btn:hover { color: #1f2f1c; border-color: #f2e6a8; }
-    .lock-btn:hover::before { transform: none; }
-    #lock-error { color: #ffd9a8; font-family: var(--sans); font-style: normal; font-size: 0.85rem; margin: 1.2rem 0 0; display: none; letter-spacing: 0.1em; }
-    .lock-box.shake { animation: shake 0.5s; }
-    @keyframes shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-10px); } 40% { transform: translateX(9px); } 60% { transform: translateX(-6px); } 80% { transform: translateX(4px); } }
-
-    /* ---------- レスポンシブ ---------- */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-header { padding-left: 1.2rem; padding-right: 1.2rem; }
-      .hero { padding-bottom: 9rem; }
-      .scroll-cue { display: none; }
-      .hero-title em { padding-left: 0.3em; }
-      .profile-table th, .profile-table td { display: block; width: 100%; padding: 0.4rem 0.3rem; }
-      .profile-table th { padding-top: 1.3rem; }
-      .profile-table td { padding-bottom: 1.3rem; }
-      .modal-container::before { top: -1.6rem; margin-top: -1.6rem; }
-      .modal-sunlight { width: 260px; height: 260px; top: -1.6rem; right: -1.6rem; }
+    .lock-box p {
+      font-size: 0.9rem;
+      color: #b0c2b6;
+      margin-bottom: 1.5rem;
     }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
-      html { scroll-behavior: auto; }
-      .ch { transform: none; }
-      .modal-container { clip-path: none !important; transform: none !important; opacity: 1 !important; }
+    .lock-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #486352;
+      border-radius: 6px;
+      background: #1a251e;
+      color: #ffffff;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      outline: none;
+    }
+    .lock-input:focus {
+      border-color: #52a468;
+    }
+    .lock-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #3b7b4a;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .lock-btn:hover {
+      background-color: #49995c;
+    }
+    #lock-error {
+      color: #ff7b7b;
+      font-size: 0.85rem;
+      margin-top: 0.8rem;
+      display: none;
     }
   </style>
 </head>
-<body class="locked">
+<body>
 
-  <!-- パスワード認証オーバーレイ -->
+  <!-- パスワード認証画面 -->
   <div id="lock-screen">
-    <canvas id="lock-canvas" aria-hidden="true"></canvas>
-    <div class="lock-box" id="lock-box">
-      <svg class="lock-crest" viewBox="0 0 48 48" aria-hidden="true">
-        <circle cx="24" cy="24" r="22" stroke-width="1.2" stroke-dasharray="3 3"/>
-        <path d="M12 32 L24 14 L36 32 Z" stroke-width="1.5"/>
-        <path d="M24 14 V34" stroke-width="1.2"/>
-        <circle cx="24" cy="20" r="2.2" fill="currentColor"/>
-      </svg>
-      <h2>KUJIYAMA FIELD</h2>
-      <p>Private Preview Access</p>
-      <input type="password" id="password-input" class="lock-input" placeholder="パスワードを入力" autocomplete="off" autofocus>
-      <button type="button" id="lock-button" class="lock-btn">ENTER</button>
+    <div class="lock-box">
+      <h2>閲覧制限</h2>
+      <p>このサイトを閲覧するには合言葉（パスワード）を入力してください。</p>
+      <input type="password" id="password-input" class="lock-input" placeholder="合言葉を入力" autofocus>
+      <button onclick="checkPassword()" class="lock-btn">サイトを表示する</button>
       <p id="lock-error">パスワードが正しくありません。</p>
     </div>
   </div>
 
-  <!-- カスタムカーソル / 進捗 / 木漏れ日レイヤー -->
-  <div class="c-ring" aria-hidden="true"><i></i></div>
-  <div class="c-dot" aria-hidden="true"><i></i></div>
-  <div id="progress" aria-hidden="true"></div>
-  <canvas id="motes" aria-hidden="true"></canvas>
-  <canvas id="shade" aria-hidden="true"></canvas>
-  <div class="grain" aria-hidden="true"></div>
-
-  <!-- ナビゲーションバー -->
-  <header class="nav-header" id="nav">
-    <a href="#" class="brand-logo" id="logo">
-      <svg class="brand-crest" viewBox="0 0 48 48" aria-hidden="true">
-        <circle cx="24" cy="24" r="22" stroke-width="1.2" stroke-dasharray="2 2"/>
-        <path d="M12 32 L24 14 L36 32 Z" stroke-width="1.5"/>
-        <path d="M24 14 V34" stroke-width="1.2"/>
-        <circle cx="24" cy="20" r="2.2" fill="currentColor"/>
-      </svg>
-      <div class="brand-text-wrap">
-        <span class="brand-text">KUJIYAMA FIELD</span>
-        <span class="brand-sub">KUJI, IWATE / 運営：合同会社くじやま</span>
-      </div>
-    </a>
-    <nav class="nav-links">
-      <a href="#about-field" class="scramble">くじやまとは</a>
-      <a href="#categories" class="scramble">フィールド案内</a>
-      <a href="#gallery" class="scramble">風景・素材</a>
-      <a href="#company" class="scramble">会社概要</a>
-      <a href="#contact" class="scramble">お問い合わせ</a>
-    </nav>
+  <!-- サイトヘッダー -->
+  <header>
+    <h1>くじやまフィールド</h1>
+    <p>植物栽培・原木きのこ・アウトドアフィールドの創造</p>
   </header>
 
-  <!-- ヒーローエリア -->
-  <section class="hero" id="top">
-    <div class="sunglow" aria-hidden="true"></div>
-    <div class="shafts" aria-hidden="true">
-      <i style="left:58%; width:7vw; --rot:17deg; animation-delay:-2s"></i>
-      <i style="left:70%; width:12vw; --rot:19deg; animation-delay:-6s"></i>
-      <i style="left:80%; width:5vw; --rot:15deg; animation-delay:-4s"></i>
-      <i style="left:46%; width:4vw; --rot:20deg; animation-delay:-8s"></i>
-      <i style="left:90%; width:9vw; --rot:16deg; animation-delay:-1s"></i>
-    </div>
-
-    <div class="hero-overlay"></div>
-
-    <div class="hero-parallax" id="heroParallax">
-      <div class="hero-content">
-        <span class="hero-sub hero-in" style="--d:.1s">Botanical &amp; Wild Mountain</span>
-        <h1 class="hero-title split" id="heroTitle">森の鼓動と、<br><em>大地の恵み</em>を遊ぶ。</h1>
-        <p class="hero-desc hero-in" style="--d:1.2s">
-          岩手県久慈市夏井町鳥谷。広大な山林を拓き、大地をまるごと五感で味わう体験空間「くじやまフィールド」。キャンプ＆BBQ、野生味あふれる花卉栽培、そして滋味豊かな原木きのこが息づく場所。
-        </p>
-        <div class="hero-in hero-btn-group" style="--d:1.4s">
-          <a href="#categories" class="hero-btn magnetic">
-            <span class="scramble">EXPLORE FIELD</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-          <button type="button" class="hero-btn btn-sub magnetic" data-open-modal="about-field">
-            <span>くじやまとは</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 赤松の稜線シルエット -->
-    <div class="ridges" aria-hidden="true">
-      <svg class="r1" viewBox="0 0 1440 300" preserveAspectRatio="none" data-depth="0.5"><path id="tree1" d=""/></svg>
-      <svg class="r2" viewBox="0 0 1440 300" preserveAspectRatio="none" data-depth="1"><path id="tree2" d=""/></svg>
-      <svg class="r3" viewBox="0 0 1440 300" preserveAspectRatio="none" data-depth="1.5"><path d="M0 284 C240 262 430 292 700 274 C980 256 1200 290 1440 268 L1440 300 L0 300Z"/></svg>
-    </div>
-
-    <div class="scroll-cue" aria-hidden="true">Scroll</div>
-  </section>
-
   <main>
-    <!-- くじやまとは (Concept) -->
-    <div class="section-header" id="about-field">
-      <span class="section-tag">About Kujiyama Field</span>
-      <h2 class="section-title split">くじやまとは</h2>
-      <span class="rule"></span>
-    </div>
-
-    <div class="concept-panel reveal">
-      <div class="concept-text-wrap">
-        <h3 class="concept-lead">岩手・久慈の山林を開拓し、<br>大地本来の循環を体感する拠点。</h3>
-        <p class="concept-p">
-          「くじやまフィールド」は、岩手県久慈市夏井町鳥谷に広がる山林拠点をベースに、手つかずの自然と人が心地よく共鳴する場所として創り上げられています。<br>
-          赤松が生い茂り、四季折々の野草が芽吹く森の中で、木々の間を吹き抜ける風、原木が育む滋味、そして土に触れる喜び。消費するだけのアウトドアではなく、森の命を分かち合う3つの体験をお届けします。
-        </p>
-        <button type="button" class="open-modal-trigger" data-open-modal="about-field">
-          <span>「くじやまの思想とビジョン」を読む</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </button>
-      </div>
-      <div class="concept-visual">
-        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80" alt="久慈の美しい森" loading="lazy" decoding="async">
-      </div>
-    </div>
-
-    <!-- 3大カテゴリー紹介 -->
-    <div class="section-header" id="categories">
-      <span class="section-tag">Three Categories</span>
-      <h2 class="section-title split">フィールド案内</h2>
-      <span class="rule"></span>
-    </div>
-
-    <div class="cards-grid">
-      <!-- 1: くじやまキャンプ＆BBQ -->
-      <div class="reveal stair-1" style="--d:0s">
-        <div class="float-1">
-          <article class="modern-card" data-open-modal="camp-bbq">
-            <div class="card-thumb">
-              <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80" alt="くじやまキャンプ＆BBQ" loading="lazy" decoding="async">
-            </div>
-            <div class="card-body">
-              <span class="card-cat">Outdoor &amp; Camp</span>
-              <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
-                <path pathLength="1" d="M6 56 L32 10 L58 56 Z"/>
-                <path pathLength="1" d="M32 56 L32 38 M32 38 L23 56 M32 38 L41 56"/>
-                <path pathLength="1" d="M2 60 H62"/>
-              </svg>
-              <h3 class="card-title">くじやまキャンプ＆BBQ</h3>
-              <p class="card-text">
-                山林を切り拓いたプライベート感あふれるアウトドアフィールド。森の澄んだ空気とともに、採れたての食材を豪快に味わう格別のひととき。
-              </p>
-              <div class="card-cta-hint">
-                <span>詳しく見る</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </div>
-          </article>
+    <!-- 事業紹介セクション -->
+    <h2 class="section-title">事業内容</h2>
+    <div class="services-grid">
+      
+      <!-- 1. バーベキュー場・アウトドアフィールド -->
+      <article class="service-card">
+        <div class="card-thumb">
+          <!-- images/bbq.webp を配置すると自動反映されます -->
+          <img src="./images/bbq.webp" alt="くじやまBBQフィールド" onerror="this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80'" loading="lazy" decoding="async">
         </div>
-      </div>
-
-      <!-- 2: くじやまフラワー＆ボタニカル -->
-      <div class="reveal stair-2" style="--d:.15s">
-        <div class="float-2">
-          <article class="modern-card" data-open-modal="flower-botanical">
-            <div class="card-thumb">
-              <img src="https://images.unsplash.com/photo-1508615039623-a25605d2b022?auto=format&fit=crop&w=800&q=80" alt="くじやまフラワー＆ボタニカル" loading="lazy" decoding="async">
-            </div>
-            <div class="card-body">
-              <span class="card-cat">Botanical &amp; Dried Flower</span>
-              <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
-                <path pathLength="1" d="M32 60 C32 42 32 28 32 6"/>
-                <path pathLength="1" d="M32 46 C22 46 16 40 14 32 C24 32 30 37 32 46"/>
-                <path pathLength="1" d="M32 35 C42 35 48 29 50 21 C40 21 34 26 32 35"/>
-                <path pathLength="1" d="M32 23 C26 22 22 18 21 12 C27 13 31 17 32 23"/>
-              </svg>
-              <h3 class="card-title">くじやまフラワー＆ボタニカル</h3>
-              <p class="card-text">
-                アナベルやスモークツリー、各種ハーブなどのドライフラワー素材を栽培。山野に自生する山葡萄や葛などの天然蔓を編み上げたリースベースを展開。
-              </p>
-              <div class="card-cta-hint">
-                <span>詳しく見る</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </div>
-          </article>
+        <div class="card-body">
+          <span class="card-tag">FIELD & BBQ</span>
+          <h3>アウトドアフィールド・BBQ</h3>
+          <p>久慈の豊かな自然に囲まれた開放的なフィールド。地域の食材を味わい、大地本来の醍醐味を体感できる空間を提供します。</p>
         </div>
-      </div>
+      </article>
 
-      <!-- 3: くじやま原木きのこ -->
-      <div class="reveal stair-3" style="--d:.3s">
-        <div class="float-3">
-          <article class="modern-card" data-open-modal="mushrooms">
-            <div class="card-thumb">
-              <img src="https://images.unsplash.com/photo-1543158266-0066955047b1?auto=format&fit=crop&w=800&q=80" alt="くじやま原木きのこ" loading="lazy" decoding="async">
-            </div>
-            <div class="card-body">
-              <span class="card-cat">Log Mushroom Culture</span>
-              <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
-                <path pathLength="1" d="M8 36 C8 21 19 9 32 9 C45 9 56 21 56 36 Z"/>
-                <path pathLength="1" d="M25 36 C26 45 25 52 23 57 L41 57 C39 52 38 45 39 36"/>
-                <path pathLength="1" d="M22 24 a2.2 2.2 0 1 0 0.01 0"/>
-                <path pathLength="1" d="M36 19 a2.6 2.6 0 1 0 0.01 0"/>
-                <path pathLength="1" d="M44 29 a2 2 0 1 0 0.01 0"/>
-              </svg>
-              <h3 class="card-title">くじやま原木きのこ</h3>
-              <p class="card-text">
-                久慈の豊かな森林原木に菌糸を打ち込み、自然の巡りに合わせてじっくり育てるシイタケ、マイタケ、ナメコ。肉厚で芳醇な本物の滋味をお届けします。
-              </p>
-              <div class="card-cta-hint">
-                <span>詳しく見る</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </div>
-          </article>
+      <!-- 2. ボタニカル・花卉栽培 -->
+      <article class="service-card">
+        <div class="card-thumb">
+          <!-- images/botanical.webp を配置すると自動反映されます -->
+          <img src="./images/botanical.webp" alt="ボタニカル・花卉栽培" onerror="this.src='https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80'" loading="lazy" decoding="async">
         </div>
-      </div>
+        <div class="card-body">
+          <span class="card-tag">BOTANICAL & CRAFT</span>
+          <h3>花卉栽培・ドライフラワー</h3>
+          <p>自然の恵みを生かした花卉や山野草の栽培、リースやスワッグの素材となるドライフラワーの生産・クラフト展開を行います。</p>
+        </div>
+      </article>
+
+      <!-- 3. 原木きのこ栽培 -->
+      <article class="service-card">
+        <div class="card-thumb">
+          <!-- images/mushroom.webp を配置すると自動反映されます -->
+          <img src="./images/mushroom.webp" alt="原木きのこ栽培" onerror="this.src='https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&w=800&q=80'" loading="lazy" decoding="async">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">FOREST AGRI</span>
+          <h3>原木きのこ栽培</h3>
+          <p>ナラなどの原木を用い、シイタケ・舞茸・ナメコを丹精込めて育成。森林の循環を活かした力強い風味を育てています。</p>
+        </div>
+      </article>
+
     </div>
 
-    <!-- 写真ギャラリー -->
-    <div class="section-header" id="gallery">
-      <span class="section-tag">Field Archives</span>
-      <h2 class="section-title split">風景と素材</h2>
-      <span class="rule"></span>
-    </div>
-
+    <!-- 風景・素材ギャラリーセクション -->
+    <h2 class="section-title">風景と素材</h2>
     <div class="gallery-grid">
-      <div class="gallery-item g-w-8 reveal" style="--d:0s">
-        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80" alt="久慈の山林フィールド" loading="lazy" decoding="async">
-        <div class="gallery-caption">KUJI MOUNTAIN FIELD / 久慈の山林拠点</div>
+      <div class="gallery-item">
+        <img src="./images/gallery-1.webp" alt="フィールド風景" onerror="this.src='https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80'" loading="lazy" decoding="async">
       </div>
-      <div class="gallery-item g-w-4 reveal" style="--d:.15s">
-        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80" alt="自生する野草と木々" loading="lazy" decoding="async">
-        <div class="gallery-caption">WILD BOTANICAL / 豊かな自生植物</div>
+      <div class="gallery-item">
+        <img src="./images/gallery-2.webp" alt="植物素材" onerror="this.src='https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80'" loading="lazy" decoding="async">
       </div>
-      <div class="gallery-item g-w-4 reveal" style="--d:.1s">
-        <img src="https://images.unsplash.com/photo-1470058869958-2a77ade41c02?auto=format&fit=crop&w=800&q=80" alt="ドライフラワー・リース素材" loading="lazy" decoding="async">
-        <div class="gallery-caption">DRIED FLOWERS / アナベル・ハーブ</div>
+      <div class="gallery-item">
+        <img src="./images/gallery-3.webp" alt="きのこ原木" onerror="this.src='https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80'" loading="lazy" decoding="async">
       </div>
-      <div class="gallery-item g-w-4 reveal" style="--d:.2s">
-        <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80" alt="原木栽培の様子" loading="lazy" decoding="async">
-        <div class="gallery-caption">LOG CULTIVATION / 原木シイタケ</div>
-      </div>
-      <div class="gallery-item g-w-4 reveal" style="--d:.3s">
-        <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80" alt="木漏れ日の小道" loading="lazy" decoding="async">
-        <div class="gallery-caption">SEASONAL VIEW / 季節の移ろい</div>
-      </div>
-    </div>
-
-    <!-- 運営会社概要 -->
-    <div class="section-header" id="company">
-      <span class="section-tag">Management Company</span>
-      <h2 class="section-title split">運営会社</h2>
-      <span class="rule"></span>
-    </div>
-
-    <div class="profile-card reveal">
-      <table class="profile-table">
-        <tbody>
-          <tr>
-            <th>運営会社</th>
-            <td>合同会社くじやま (Kujiyama LLC)</td>
-          </tr>
-          <tr>
-            <th>代表社員</th>
-            <td>梶谷 真一</td>
-          </tr>
-          <tr>
-            <th>フィールド拠点</th>
-            <td>岩手県久慈市夏井町鳥谷</td>
-          </tr>
-          <tr>
-            <th>事業内容</th>
-            <td>
-              くじやまフィールドの企画・運営<br>
-              花卉・山野草の栽培およびドライフラワー・リース素材の加工・販売<br>
-              原木きのこ（シイタケ・マイタケ・ナメコ）の栽培・販売<br>
-              アウトドアフィールド・バーベキュー場の運営
-            </td>
-          </tr>
-          <tr>
-            <th>お問い合わせ</th>
-            <td id="contact">info@kujiyama.com</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- リンクポータル -->
-      <div class="portal-links">
-        <a href="mailto:info@kujiyama.com" class="link-box magnetic">
-          <span class="scramble">CONTACT / お問い合わせ</span>
-        </a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="link-box magnetic">
-          <span class="scramble">INSTAGRAM</span>
-        </a>
+      <div class="gallery-item">
+        <img src="./images/gallery-4.webp" alt="クラフトワーク" onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80'" loading="lazy" decoding="async">
       </div>
     </div>
   </main>
 
-  <!-- 上下に視界が開けるシネマティック・ポップアップウィンドウ（モーダル） -->
-  <div class="shutter-modal" id="shutterModal" aria-hidden="true" role="dialog">
-    <div class="modal-container" id="modalContainer">
-      
-      <!-- スクロールしても常に右上に追従する木漏れ日・日差し -->
-      <div class="modal-sunlight-anchor" aria-hidden="true">
-        <div class="modal-sunlight"></div>
-      </div>
-
-      <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="閉じる">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
-      
-      <div class="modal-content-wrap">
-        <div class="modal-tag" id="modalTag">ABOUT</div>
-        <h3 class="modal-title" id="modalTitle">タイトル</h3>
-        <div class="modal-img-wrap">
-          <img id="modalImg" src="" alt="モーダル画像">
-        </div>
-        <div class="modal-body-text" id="modalBody">本文</div>
-        
-        <div class="modal-cta-box">
-          <span style="font-size:0.85rem; color:#b9c8ad;" id="modalCtaNote">ご予約や素材の仕入れなど、お気軽にお問い合わせください。</span>
-          <a href="mailto:info@kujiyama.com" class="modal-cta-btn" id="modalCtaBtn">
-            <span id="modalCtaText">お問い合わせ・相談</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- フッター -->
-  <footer id="footer">
-    <div class="foot-word" id="footWord" aria-hidden="true">KUJIYAMA FIELD</div>
-    <p>&copy; 2026 KUJIYAMA FIELD / 合同会社くじやま. All Rights Reserved.</p>
+  <footer>
+    <p>&copy; 合同会社くじやま All Rights Reserved.</p>
   </footer>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
+  <!-- 認証 & タブ切り替え制御スクリプト -->
   <script>
-  (() => {
-    'use strict';
-    const $ = (s, el = document) => el.querySelector(s);
-    const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-    const root = document.documentElement;
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
-    const now = new Date();
-    const hour = now.getHours();
-    const dusk = hour >= 18 || hour < 5;
-
-    const store = {
-      get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
-      set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
-    };
-
-    /* ============ モーダル（ポップアップ）データ定義 ============ */
-    const MODAL_DATA = {
-      'about-field': {
-        tag: 'KUJIYAMA PHILOSOPHY',
-        title: 'くじやまとは',
-        image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80',
-        body: `「くじやまフィールド」は、岩手県久慈市夏井町鳥谷の静寂な山林に根ざした、自然共生型のアウトドア＆ボタニカル拠点です。
-
-この地は、古くから厳しい冬と豊かな春・夏の恵みを繰り返してきた、力強い北東北の自然そのもの。私たちは、山林を単に切り開いて人工的な施設を作るのではなく、もともとそこに息づく木々、野草、菌類、そして起伏ある地形を尊重しながら、手作業でフィールドを整えてきました。
-
-「くじやまキャンプ＆BBQ」による野生の開放感、
-「くじやまフラワー＆ボタニカル」が届ける草木の造形美、
-「くじやま原木きのこ」がもたらす大地の深みある味覚。
-
-都会の喧騒から離れ、土を踏みしめ、風の音を聞き、大地の鼓動を直に味わう場。それが「くじやまフィールド」です。`,
-        ctaText: 'フィールドについて問い合わせる',
-        ctaLink: 'mailto:info@kujiyama.com?subject=くじやまフィールドについてのお問い合わせ'
-      },
-      'camp-bbq': {
-        tag: 'CATEGORY 01',
-        title: 'くじやまキャンプ＆BBQ',
-        image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1200&q=80',
-        body: `赤松の木立に囲まれた広大なプライベート空間で、ゆったりとした時間を過ごすアウトドア＆バーベキュー場です。
-
-一般的な区画整備されたキャンプ場とは異なり、森の地形や自生植物の息吹をダイレクトに感じられるサイト設計を進めています。鳥の声や木々の擦れ合う音に耳を傾けながら、家族や仲間と焚き火を囲み、地元・久慈の豊かな山の幸・海の幸を豪快にグリル。
-
-心地よい風が抜ける木陰で、日常を忘れ、五感を研ぎ澄ます特別なアウトドア体験をお楽しみいただけます。`,
-        ctaText: '利用・見学について相談する',
-        ctaLink: 'mailto:info@kujiyama.com?subject=くじやまキャンプ＆BBQについて'
-      },
-      'flower-botanical': {
-        tag: 'CATEGORY 02',
-        title: 'くじやまフラワー＆ボタニカル',
-        image: 'https://images.unsplash.com/photo-1508615039623-a25605d2b022?auto=format&fit=crop&w=1200&q=80',
-        body: `大地に根ざした野性味と、繊細な美しさを兼ね備えた花卉・ボタニカル素材の栽培および作品づくりを行っています。
-
-アナベル、スモークツリー、各種ハーブなどのドライフラワー向き植物をはじめ、山野に自生する山葡萄（ヤマブドウ）や葛（クズ）、クマヤナギなどの天然の蔓（ツル）を手作業で採取し、オリジナルのリース土台やスワッグを制作。
-
-自然が生み出した歪みや枝ぶりをそのまま活かしたクラフト素材は、店舗ディスプレイや暮らしを彩るインテリアとして高い評価をいただいています。山苗や素材の卸販売・オーダーメイドも承っております。`,
-        ctaText: '素材・作品について問い合わせる',
-        ctaLink: 'mailto:info@kujiyama.com?subject=くじやまフラワー＆ボタニカルについて'
-      },
-      'mushrooms': {
-        tag: 'CATEGORY 03',
-        title: 'くじやま原木きのこ',
-        image: 'https://images.unsplash.com/photo-1543158266-0066955047b1?auto=format&fit=crop&w=1200&q=80',
-        body: `北東北・久慈の清らかな空気と冷涼な気候のもと、厳選された広葉樹の原木を使って栽培する本物のきのこたち。
-
-効率を重視する菌床栽培とは異なり、原木栽培は菌糸が木全体に行き渡るまで1年〜2年の年月を要します。自然の雨水と木漏れ日だけでじっくりと育まれたシイタケ、マイタケ、ナメコは、肉厚で歯ごたえが良く、噛みしめるほどに凝縮された森の滋味が口いっぱいに広がります。
-
-自然のリズムに合わせた旬の収穫期に、新鮮な原木きのこをお届けします。`,
-        ctaText: '原木きのこの予約・購入相談',
-        ctaLink: 'mailto:info@kujiyama.com?subject=くじやま原木きのこについて'
-      }
-    };
-
-    /* ============ 上下シネマティック開閉 モーダル制御 ============ */
-    const modal = $('#shutterModal');
-    const modalContainer = $('#modalContainer');
-    const modalTag = $('#modalTag'), modalTitle = $('#modalTitle'), modalImg = $('#modalImg'), modalBody = $('#modalBody');
-    const modalCtaBtn = $('#modalCtaBtn'), modalCtaText = $('#modalCtaText');
-    const closeBtn = $('#modalCloseBtn');
-
-    function openModal(key) {
-      const data = MODAL_DATA[key];
-      if (!data) return;
-
-      modalTag.textContent = data.tag;
-      modalTitle.textContent = data.title;
-      modalImg.src = data.image;
-      modalBody.textContent = data.body;
-      modalCtaText.textContent = data.ctaText;
-      modalCtaBtn.href = data.ctaLink;
-
-      modalContainer.scrollTop = 0;
-      modal.classList.add('active');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('locked');
-    }
-
-    function closeModal() {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('locked');
-    }
-
-    // トリガー登録
-    $$('[data-open-modal]').forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        const key = el.dataset.openModal;
-        openModal(key);
-      });
-    });
-
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-    });
-
-    /* ============ 季節で木漏れ日の色が変わる ============ */
-    (function season() {
-      const m = now.getMonth() + 1;
-      let sun;
-      if (m >= 3 && m <= 5)       sun = '#f7dcc4';
-      else if (m >= 6 && m <= 8)  sun = '#f2e88c';
-      else if (m >= 9 && m <= 11) sun = '#f0c674';
-      else                        sun = '#e3eef2';
-      root.style.setProperty('--sun', sun);
-    })();
-
-    /* ============ 赤松（アカマツ）の洗練されたシルエット生成 ============ */
-    function mulberry(a) { 
-      return function () { 
-        a |= 0; a = a + 0x6D2B79F5 | 0; 
-        let t = Math.imul(a ^ a >>> 15, 1 | a); 
-        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; 
-        return ((t ^ t >>> 14) >>> 0) / 4294967296; 
-      }; 
-    }
-
-    function pineCrown(cx, cy, rx, ry, seedR) {
-      const f = n => n.toFixed(1);
-      const topY = cy - ry * 0.45;
-      const botY = cy + ry * 0.55;
-      const leftX = cx - rx;
-      const rightX = cx + rx;
-      const tilt = (seedR() - 0.5) * (rx * 0.18);
-      return ` M${f(leftX)} ${f(cy + tilt)} C${f(cx - rx * 0.5)} ${f(topY + tilt * 0.5)} ${f(cx + rx * 0.5)} ${f(topY - tilt * 0.5)} ${f(rightX)} ${f(cy - tilt)} C${f(cx + rx * 0.4)} ${f(botY - tilt * 0.3)} ${f(cx - rx * 0.4)} ${f(botY + tilt * 0.3)} ${f(leftX)} ${f(cy + tilt)} Z`;
-    }
-
-    function generatePineForest(seed, base, minH, maxH, minW, maxW) {
-      const r = mulberry(seed);
-      let x = -50;
-      const f = n => n.toFixed(1);
-      
-      let ground = `M-50 ${base}`;
-      let foliage = '';
-
-      while (x < 1490) {
-        const w = minW + r() * (maxW - minW);
-        const h = minH + r() * (maxH - minH);
-        const sway = (r() - 0.5) * (w * 0.5);
-        const topX = x + w * 0.5 + sway;
-        const topY = base - h;
-        const trunkW = 3 + r() * 3.5;
-
-        const bendX = x + w * 0.5 + sway * 0.4 + (r() - 0.5) * 12;
-        const bendY = base - h * 0.55;
-
-        foliage += ` M${f(x + w * 0.5 - trunkW)} ${base} Q${f(bendX - trunkW * 0.6)} ${f(bendY)} ${f(topX - trunkW * 0.3)} ${f(topY + 10)} L${f(topX + trunkW * 0.3)} ${f(topY + 10)} Q${f(bendX + trunkW * 0.6)} ${f(bendY)} ${f(x + w * 0.5 + trunkW)} ${base} Z`;
-        foliage += pineCrown(topX, topY, w * 0.46, h * 0.16, r);
-
-        const side1 = r() > 0.5 ? 1 : -1;
-        const b1X = topX + side1 * (w * 0.36);
-        const b1Y = topY + h * 0.28;
-        foliage += pineCrown(b1X, b1Y, w * 0.38, h * 0.14, r);
-
-        if (h > (minH + maxH) * 0.48) {
-          const b2X = topX - side1 * (w * 0.32);
-          const b2Y = topY + h * 0.46;
-          foliage += pineCrown(b2X, b2Y, w * 0.34, h * 0.12, r);
-        }
-
-        ground += ` Q${f(x + w * 0.5)} ${f(base - 3 + r() * 6)} ${f(x + w)} ${base}`;
-        x += w * (0.65 + r() * 0.38);
-      }
-
-      ground += ` L1490 300 L-50 300 Z`;
-      return ground + foliage;
-    }
-
-    $('#tree1').setAttribute('d', generatePineForest(55, 240, 65, 125, 45, 80));
-    $('#tree2').setAttribute('d', generatePineForest(108, 272, 95, 175, 70, 115));
-
-    /* ============ トースト ============ */
-    const toastEl = $('#toast');
-    let toastTimer;
-    function toast(msg) {
-      toastEl.textContent = msg; toastEl.classList.add('show');
-      clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2600);
-    }
-
-    /* ============ 文字分割 ============ */
-    function splitChars(rootEl) {
-      let i = 0;
-      (function walk(node) {
-        [...node.childNodes].forEach(n => {
-          if (n.nodeType === 3) {
-            const frag = document.createDocumentFragment();
-            [...n.textContent].forEach(c => {
-              if (c.trim() === '') { frag.append(c); return; }
-              const w = document.createElement('span'); w.className = 'cw'; w.setAttribute('aria-hidden', 'true');
-              const s = document.createElement('span'); s.className = 'ch'; s.textContent = c; s.style.setProperty('--i', i++);
-              w.append(s); frag.append(w);
-            });
-            n.replaceWith(frag);
-          } else if (n.nodeType === 1 && n.tagName !== 'BR') walk(n);
-        });
-      })(rootEl);
-    }
-    $$('.split').forEach(el => { el.setAttribute('aria-label', el.textContent.trim()); splitChars(el); });
-
-    /* ============ パスワード認証 ============ */
     const CORRECT_PW = "kujiyama2026";
-    const lock = $('#lock-screen'), pwInput = $('#password-input'), lockBox = $('#lock-box');
-    let lockRun = true;
-
-    function startIntro(delay) {
-      setTimeout(() => {
-        document.body.classList.remove('locked');
-        document.body.classList.add('ready');
-        $('#heroTitle').classList.add('in');
-      }, delay);
-    }
-    function checkPassword() {
-      if (pwInput.value === CORRECT_PW) {
-        store.set('kujiyama_authorized', 'true');
-        lock.classList.add('open');
-        startIntro(650);
-        setTimeout(() => { lock.style.display = 'none'; lockRun = false; }, 1300);
-      } else {
-        $('#lock-error').style.display = 'block';
-        lockBox.classList.remove('shake'); void lockBox.offsetWidth; lockBox.classList.add('shake');
-      }
-    }
-    $('#lock-button').addEventListener('click', checkPassword);
-    pwInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
-    if (store.get('kujiyama_authorized') === 'true') { lock.style.display = 'none'; lockRun = false; startIntro(350); }
-
-    /* ============ ロック画面のパーティクル ============ */
-    (function lockCanvas() {
-      const cv = $('#lock-canvas'), c = cv.getContext('2d');
-      let w, h, dots = [];
-      function size() {
-        const d = Math.min(2, devicePixelRatio || 1);
-        w = cv.clientWidth; h = cv.clientHeight; cv.width = w * d; cv.height = h * d; c.setTransform(d, 0, 0, d, 0, 0);
-        dots = Array.from({ length: Math.min(70, (w * h / 16000) | 0) }, () => ({ x: Math.random() * w, y: Math.random() * h, r: 0.7 + Math.random() * 2, v: 0.1 + Math.random() * 0.35, p: Math.random() * 6.28 }));
-      }
-      size(); addEventListener('resize', size);
-      (function loop(t) {
-        if (!lockRun) return;
-        c.clearRect(0, 0, w, h);
-        dots.forEach(d => {
-          d.y -= d.v; d.x += Math.sin(t * 0.0006 + d.p) * 0.3;
-          if (d.y < -5) { d.y = h + 5; d.x = Math.random() * w; }
-          c.globalAlpha = 0.25 + 0.5 * Math.abs(Math.sin(t * 0.0012 + d.p));
-          c.fillStyle = '#f5e9ac'; c.beginPath(); c.arc(d.x, d.y, d.r, 0, 6.283); c.fill();
-        });
-        requestAnimationFrame(loop);
-      })(0);
-    })();
-
-    /* ============ 木漏れ日・パーティクル ============ */
-    const mo = $('#motes'), mc = mo.getContext('2d');
-    const sh = $('#shade'), sc = sh.getContext('2d');
-    const PAD = 30, S = 0.5;
-    let W, H, SW, SH;
-    const P = [], G = [], sparks = [], leaves = [];
-    let gust = 0;
-    const mouse = { x: -9999, y: -9999, down: false, downAt: 0 };
-
-    function radial(size, rgb, stops) {
-      const c = document.createElement('canvas'); c.width = c.height = size;
-      const g = c.getContext('2d'), r = size / 2, gr = g.createRadialGradient(r, r, 0, r, r, r);
-      stops.forEach(([o, a]) => gr.addColorStop(o, `rgba(${rgb},${a})`));
-      g.fillStyle = gr; g.fillRect(0, 0, size, size); return c;
-    }
-    const holeSprite = radial(128, '255,255,255', [[0, 1], [0.5, 0.8], [1, 0]]);
-    const warmSprite = radial(128, '255,238,168', [[0, 0.95], [0.6, 0.35], [1, 0]]);
-    const moteSprites = [
-      radial(64, '236,196,92', [[0, 1], [0.2, 0.55], [0.55, 0.12], [1, 0]]),
-      radial(64, '130,165,80', [[0, 1], [0.2, 0.5], [0.55, 0.1], [1, 0]])
-    ];
-
-    function initAll() {
-      const dpr = Math.min(2, devicePixelRatio || 1);
-      W = innerWidth; H = innerHeight;
-      mo.width = W * dpr; mo.height = H * dpr; mc.setTransform(dpr, 0, 0, dpr, 0, 0);
-      SW = Math.ceil((W + PAD * 2) * S); SH = Math.ceil((H + PAD * 2) * S); sh.width = SW; sh.height = SH;
-
-      P.length = 0;
-      const pn = Math.min(70, Math.floor(W * H / 24000));
-      for (let i = 0; i < pn; i++) P.push({ x: Math.random() * W, y: Math.random() * H, a: Math.random() * 6.28, s: 0.12 + Math.random() * 0.32, r: 5 + Math.random() * 11, ph: Math.random() * 6.28, t: Math.random() < 0.65 ? 0 : 1 });
-
-      G.length = 0;
-      const gn = Math.max(14, Math.min(34, Math.round(W * H / 38000)));
-      for (let i = 0; i < gn; i++) G.push({ bx: Math.random() * W, by: Math.random() * (H + 400) - 200, d: 0.25 + Math.random() * 0.75, r: 50 + Math.random() * 130, ar: 0.55 + Math.random() * 0.35, rot: Math.random() * 3.14, ph: Math.random() * 6.28, ph2: Math.random() * 6.28, sp: 0.6 + Math.random() * 0.9, a: 0.55 + Math.random() * 0.4, x: 0, y: 0, rw: 0, rh: 0, rt: 0 });
-    }
-    initAll(); addEventListener('resize', initAll);
-
-    function burst(x, y) {
-      for (let i = 0; i < 16; i++) {
-        const a = Math.random() * 6.283, sp = 0.8 + Math.random() * 2.8;
-        sparks.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 0.5, life: 1, r: 7 + Math.random() * 12, t: Math.random() < 0.6 ? 0 : 1 });
-      }
-      gust = Math.min(1.6, gust + 0.9);
-    }
-    function leafRain() {
-      const cols = ['#6b8a3f', '#8fae54', '#c9b84a', '#4d6b34', '#d9a441'];
-      for (let i = 0; i < 80; i++) leaves.push({ x: Math.random() * W, y: -30 - Math.random() * H * 0.9, vy: 1 + Math.random() * 2.2, vx: (Math.random() - 0.5) * 1.2, rot: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.08, s: 6 + Math.random() * 10, c: cols[(Math.random() * cols.length) | 0], ph: Math.random() * 6 });
-      gust = 1.6;
-    }
-
-    /* ============ ポインタ ============ */
-    const ringEl = $('.c-ring'), dotEl =$('.c-dot');
-    let cxp = innerWidth / 2, cyp = innerHeight / 2, rxp = cxp, ryp = cyp;
-    if (fine) document.body.classList.add('has-cursor');
-    addEventListener('pointermove', e => {
-      mouse.x = e.clientX; mouse.y = e.clientY; cxp = e.clientX; cyp = e.clientY;
-      if (fine) dotEl.style.transform = `translate(${cxp}px,${cyp}px)`;
-    }, { passive: true });
-    document.addEventListener('pointerover', e => {
-      if (fine) ringEl.classList.toggle('hover', !!(e.target.closest && e.target.closest('a,button,.modern-card,.gallery-item,.magnetic,.open-modal-trigger')));
-    });
-    document.addEventListener('pointerdown', e => {
-      mouse.down = true; mouse.downAt = performance.now(); ringEl.classList.add('down');
-      if (!lockRun) burst(e.clientX, e.clientY);
-    });
-    addEventListener('pointerup', () => { mouse.down = false; ringEl.classList.remove('down'); });
-    document.addEventListener('pointerleave', () => { mouse.x = mouse.y = -9999; });
-
-    /* ============ スクロール ============ */
-    let lastY = 0, vel = 0, lastNav = 0;
-    const nav = $('#nav'), progress = $('#progress');
-    addEventListener('scroll', () => {
-      const y = window.scrollY;
-      nav.classList.toggle('solid', y > 60);
-      if (y > lastNav + 4 && y > 240) nav.classList.add('hide');
-      if (y < lastNav - 4 || y < 240) nav.classList.remove('hide');
-      lastNav = y;
-      const max = document.documentElement.scrollHeight - innerHeight;
-      progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
-    }, { passive: true });
-
-    /* ============ リビール ============ */
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-    }, { threshold: 0.15, rootMargin: '0px 0px -4% 0px' });
-    $$('.reveal, .section-header, .section-title.split, .profile-table tr').forEach(el => io.observe(el));
-    $$('.profile-table tr').forEach((tr, i) => tr.querySelectorAll('th,td').forEach(c => { c.style.transitionDelay = (i * 0.09 + (c.tagName === 'TD' ? 0.12 : 0)) + 's'; }));      /* ============ カード：3Dチルト ============ */     $$
-('.modern-card').forEach(c => {
-      c.addEventListener('pointermove', e => {
-        const r = c.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
-        c.style.setProperty('--mx', x + 'px'); c.style.setProperty('--my', y + 'px');
-        if (!reduce && e.pointerType === 'mouse') {
-          const px = x / r.width - 0.5, py = y / r.height - 0.5;
-          c.style.transform = `perspective(900px) rotateX(${-py * 6}deg) rotateY(${px * 8}deg)`;
-        }
-      });
-      c.addEventListener('pointerleave', () => { c.style.transform = ''; });
-    });
-
-    /* ============ マグネットボタン ============ */
-    if (fine && !reduce) {
-      $$('.magnetic').forEach(el => {
-        el.addEventListener('pointermove', e => {
-          const r = el.getBoundingClientRect();
-          el.style.transform = `translate(${(e.clientX - (r.left + r.width / 2)) * 0.22}px, ${(e.clientY - (r.top + r.height / 2)) * 0.35}px)`;
-        });
-        el.addEventListener('pointerleave', () => { el.style.transform = ''; });
-      });
-    }
-
-    /* ============ テキストスクランブル ============ */
-    const glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ｱｲｳｴｵｶｷｸｹｺ';
-    function scramble(el) {
-      const orig = el.dataset.t || (el.dataset.t = el.textContent); let f = 0;
-      clearInterval(el._t);
-      el._t = setInterval(() => {
-        el.textContent = [...orig].map((ch, i) => (ch === ' ' || i < f / 2) ? ch : glyphs[(Math.random() * glyphs.length) | 0]).join('');
-        if (++f / 2 >= orig.length) { clearInterval(el._t); el.textContent = orig; }
-      }, 32);
-    }
-    if (!reduce) $$('.scramble').forEach(el => (el.closest('a') || el).addEventListener('pointerenter', () => scramble(el)));
-
-    /* ============ フッター ============ */
-    const footWord = $('#footWord'), footer = $('#footer');
-    footer.addEventListener('pointermove', e => {
-      const r = footWord.getBoundingClientRect();
-      footWord.style.setProperty('--fx', (e.clientX - r.left) + 'px');
-      footWord.style.setProperty('--fy', (e.clientY - r.top) + 'px');
-    });
-
-    footer.addEventListener('click', e => {
-      const r = footer.getBoundingClientRect();
-      const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      s.setAttribute('viewBox', '0 0 30 36'); s.setAttribute('class', 'sprout');
-      s.innerHTML = '<path d="M15 35 V16"/><path d="M15 21 C8 21 4 16 4 9 C11 9 15 14 15 21"/><path d="M15 25 C22 25 26 20 26 13 C19 13 15 18 15 25"/>';
-      const scale = 0.7 + Math.random() * 0.9;
-      s.style.left = (e.clientX - r.left - 15) + 'px';
-      s.style.width = 30 * scale + 'px'; s.style.height = 36 * scale + 'px';
-      s.style.transform = `rotate(${(Math.random() - 0.5) * 24}deg)`;
-      footer.appendChild(s);
-      const kids = $$('.sprout', footer);
-      if (kids.length > 14) kids[0].remove();
-      if (kids.length === 7) toast('小さな森ができてきた。');
-    });
-
-    let logoClicks = 0, logoTimer;
-    $('#logo').addEventListener('click', e => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-      logoClicks++; clearTimeout(logoTimer); logoTimer = setTimeout(() => logoClicks = 0, 1800);
-      if (logoClicks >= 5) {
-        logoClicks = 0;
-        const next = root.dataset.theme === 'deep' ? 'day' : 'deep';
-        root.dataset.theme = next;
-        toast(next === 'deep' ? '深い森に入った。' : '朝の森に戻った。');
-      }
-    });
-
-    const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-    let kIdx = 0;
-    addEventListener('keydown', e => {
-      const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
-      kIdx = (k === konami[kIdx]) ? kIdx + 1 : (k === konami[0] ? 1 : 0);
-      if (kIdx === konami.length) { kIdx = 0; leafRain(); toast('木々が、そっと葉を落とした。'); }
-    });
-
     const baseTitle = document.title;
-    document.addEventListener('visibilitychange', () => { document.title = document.hidden ? '森でお待ちしています | KUJIYAMA FIELD' : baseTitle; });
 
-    /* ============ メインアニメーションループ ============ */
-    const parallaxEl = $('#heroParallax'), ridgeEls = $$('.ridges svg');
-    let mnx = 0;
-
-    function frame(t) {
-      const y = window.scrollY, dy = y - lastY; lastY = y; vel += (dy - vel) * 0.12;
-      const deep = root.dataset.theme === 'deep';
-
-      if (fine) { rxp += (cxp - rxp) * 0.16; ryp += (cyp - ryp) * 0.16; ringEl.style.transform = `translate(${rxp}px,${ryp}px)`; }
-
-      mnx += (((mouse.x < 0 ? 0.5 : mouse.x / W) - 0.5) - mnx) * 0.05;
-      if (y < innerHeight * 1.3 && !reduce) {
-        parallaxEl.style.transform = `translate3d(${mnx * -14}px, ${y * 0.22}px, 0)`;
-        parallaxEl.style.opacity = Math.max(0, 1 - y / (innerHeight * 0.85));
-        ridgeEls.forEach(s => { const d = parseFloat(s.dataset.depth); s.style.transform = `translate3d(${mnx * -26 * d}px, ${-y * 0.04 * d}px, 0)`; });
-      }
-
-      const wind = 1 + gust * 2.2; gust *= 0.97;
-      const shadeA = (deep ? 0.3 : dusk ? 0.26 : 0.17);
-      const warmA = deep ? 0.07 : dusk ? 0.07 : 0.16;
-      sc.globalCompositeOperation = 'source-over';
-      sc.clearRect(0, 0, SW, SH);
-      sc.fillStyle = deep ? `rgba(3,10,4,${shadeA})` : `rgba(22,44,20,${shadeA})`;
-      sc.fillRect(0, 0, SW, SH);
-
-      const span = H + 400;
-      for (const g of G) {
-        const sway = Math.sin(t * 0.00035 * g.sp + g.ph) * 38 * wind, sway2 = Math.cos(t * 0.0005 * g.sp + g.ph2) * 16 * wind;
-        g.x = g.bx + sway;
-        g.y = (((g.by - y * g.d * 0.35 + sway2) % span) + span) % span - 200;
-        let k = 1 + 0.16 * Math.sin(t * 0.0009 * g.sp + g.ph2);
-        if (mouse.x > -999) k *= 1 + Math.max(0, 1 - Math.hypot(g.x - mouse.x, g.y - mouse.y) / 280) * 0.55;
-        g.rw = g.r * k; g.rh = g.r * g.ar * k; g.rt = g.rot + Math.sin(t * 0.0004 * g.sp + g.ph) * 0.22 * wind;
-      }
-      sc.globalCompositeOperation = 'destination-out';
-      for (const g of G) {
-        sc.save(); sc.translate((g.x + PAD) * S, (g.y + PAD) * S); sc.rotate(g.rt); sc.globalAlpha = g.a;
-        sc.drawImage(holeSprite, -g.rw * S, -g.rh * S, g.rw * 2 * S, g.rh * 2 * S); sc.restore();
-      }
-      sc.globalCompositeOperation = 'source-over';
-      for (const g of G) {
-        sc.save(); sc.translate((g.x + PAD) * S, (g.y + PAD) * S); sc.rotate(g.rt); sc.globalAlpha = g.a * warmA * 3;
-        sc.drawImage(warmSprite, -g.rw * S * 0.85, -g.rh * S * 0.85, g.rw * 1.7 * S, g.rh * 1.7 * S); sc.restore();
-      }
-      sc.globalAlpha = 1;
-
-      mc.clearRect(0, 0, W, H);
-      mc.globalCompositeOperation = 'source-over';
-      const holding = mouse.down && (performance.now() - mouse.downAt > 350);
-      for (const p of P) {
-        p.a += (Math.random() - 0.5) * 0.07;
-        p.x += Math.cos(p.a) * p.s; p.y += Math.sin(p.a) * p.s * 0.8 - 0.05;
-        p.y -= dy * (0.12 + p.r / 220);
-        if (mouse.x > -999) {
-          const ddx = p.x - mouse.x, ddy = p.y - mouse.y, d = Math.hypot(ddx, ddy) + 0.001;
-          if (holding) { if (d < 520) { const f = (520 - d) / 520; p.x -= ddx / d * f * 3; p.y -= ddy / d * f * 3; } }
-          else if (d < 150) { const f = (150 - d) / 150; p.x += ddx / d * f * 2; p.y += ddy / d * f * 2; }
-        }
-        if (p.x < -40) p.x = W + 40; if (p.x > W + 40) p.x = -40;
-        if (p.y < -40) p.y = H + 40; if (p.y > H + 40) p.y = -40;
-        const tw = 0.5 + 0.5 * Math.sin(t * 0.0016 + p.ph), sz = p.r * (0.85 + 0.3 * tw) * 2;
-        mc.globalAlpha = 0.28 + 0.5 * tw;
-        mc.drawImage(moteSprites[p.t], p.x - sz / 2, p.y - sz / 2, sz, sz);
-      }
-      for (let i = sparks.length - 1; i >= 0; i--) {
-        const s = sparks[i];
-        s.x += s.vx; s.y += s.vy; s.vx *= 0.97; s.vy = s.vy * 0.97 - 0.02; s.life -= 0.016;
-        if (s.life <= 0) { sparks.splice(i, 1); continue; }
-        mc.globalAlpha = s.life * 0.9; const sz = s.r * 2 * (0.5 + s.life * 0.5);
-        mc.drawImage(moteSprites[s.t], s.x - sz / 2, s.y - sz / 2, sz, sz);
-      }
-      for (let i = leaves.length - 1; i >= 0; i--) {
-        const l = leaves[i];
-        l.y += l.vy; l.x += l.vx + Math.sin(t * 0.002 + l.ph) * 0.9; l.rot += l.vr;
-        if (l.y > H + 30) { leaves.splice(i, 1); continue; }
-        mc.save(); mc.translate(l.x, l.y); mc.rotate(l.rot); mc.globalAlpha = 0.88; mc.fillStyle = l.c;
-        mc.beginPath(); mc.ellipse(0, 0, l.s, l.s * 0.42, 0, 0, 6.283); mc.fill(); mc.restore();
-      }
-      mc.globalAlpha = 1;
-      requestAnimationFrame(frame);
+    // パスワード認証済みチェック
+    if (sessionStorage.getItem("kujiyama_authorized") === "true") {
+      document.getElementById("lock-screen").style.display = "none";
     }
-    requestAnimationFrame(frame);
-  })();
+
+    function checkPassword() {
+      const input = document.getElementById("password-input").value;
+      const errorMsg = document.getElementById("lock-error");
+
+      if (input === CORRECT_PW) {
+        sessionStorage.setItem("kujiyama_authorized", "true");
+        document.getElementById("lock-screen").style.display = "none";
+      } else {
+        errorMsg.style.display = "block";
+      }
+    }
+
+    // Enterキー入力での解除
+    document.getElementById("password-input").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        checkPassword();
+      }
+    });
+
+    // タブ切り替え時のタイトル変更
+    document.addEventListener('visibilitychange', () => {
+      document.title = document.hidden ? '森でお待ちしています | KUJIYAMA FIELD' : baseTitle;
+    });
   </script>
+
 </body>
 </html>
