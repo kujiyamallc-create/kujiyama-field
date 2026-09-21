@@ -174,8 +174,33 @@
     .hero-content { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem); }
     .hero-sub { display: inline-flex; align-items: center; gap: 1rem; font-family: var(--latin); font-style: italic; font-weight: 600; font-size: clamp(1.1rem, 2vw, 1.5rem); color: #efe3a4; letter-spacing: 0.08em; margin-bottom: 2rem; }
     .hero-sub::before { content: ''; width: 3.2rem; height: 1px; background: #efe3a4; }
-    .hero-title { font-family: var(--serif); font-weight: 800; font-size: clamp(2.7rem, 8.5vw, 7.5rem); line-height: 1.24; letter-spacing: 0.06em; margin-bottom: 2.6rem; color: var(--h-text); text-shadow: 0 4px 40px rgba(10, 24, 8, 0.35); }
-    .hero-title em { font-style: normal; display: inline-block; padding-left: 0.8em; }
+    
+    /* ヒーロータイトルのレイアウト調整 */
+    .hero-title { 
+      font-family: var(--serif); 
+      font-weight: 800; 
+      font-size: clamp(2.4rem, 6.8vw, 6.2rem); 
+      line-height: 1.35; 
+      letter-spacing: 0.06em; 
+      margin-bottom: 2.6rem; 
+      color: var(--h-text); 
+      text-shadow: 0 4px 40px rgba(10, 24, 8, 0.35); 
+    }
+    .hero-line-1,
+    .hero-line-2,
+    .hero-line-3 {
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .hero-line-2 em { 
+      font-style: normal; 
+      display: inline-block; 
+      padding-left: 0.5em; 
+    }
+    .hero-line-3 {
+      padding-left: 1.2em;
+      color: #f7e8a9;
+    }
 
     .cw { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.06em 0 0.12em; margin: -0.06em 0 -0.12em; }
     .ch { display: inline-block; transform: translateY(118%) rotate(7deg); transform-origin: 0 100%; transition: transform 1.1s var(--ease); transition-delay: calc(var(--i) * 65ms + 0.25s); }
@@ -500,15 +525,9 @@
       padding: clamp(2.2rem, 5vw, 4rem);
       color: #f6f3e0;
       box-shadow: 0 40px 90px -15px rgba(0, 0, 0, 0.85);
-
-      /* ベース背景（自然な深緑グラデーション） */
       background: linear-gradient(180deg, #182a1a 0%, #101c11 100%);
-      
-      /* GPUアクセラレーション */
       transform: translateZ(0);
       will-change: clip-path, transform, opacity;
-
-      /* 初期状態：上下中央で畳まれている */
       clip-path: inset(50% 0% 50% 0% round 14px);
       opacity: 0;
       transition: clip-path 0.95s cubic-bezier(0.19, 1, 0.22, 1),
@@ -517,7 +536,6 @@
     }
 
     .shutter-modal.active .modal-container {
-      /* 開放状態：上下にパカッと開く */
       clip-path: inset(0% 0% 0% 0% round 14px);
       opacity: 1;
     }
@@ -543,7 +561,6 @@
       filter: blur(22px);
       opacity: 0.35;
       mix-blend-mode: screen;
-      /* 右上から左下へ差し込む5本のソフトな光芒ストライプ */
       background: 
         radial-gradient(ellipse at 100% 0%, rgba(242, 221, 142, 0.6) 0%, rgba(242, 221, 142, 0.2) 40%, transparent 80%),
         repeating-linear-gradient(
@@ -574,7 +591,6 @@
       pointer-events: none;
     }
 
-    /* 中身の文字・画像も遅れてフワッと浮かび上がるシネマ演出 */
     .modal-content-wrap > * {
       position: relative;
       z-index: 1;
@@ -725,7 +741,12 @@
       .nav-header { padding-left: 1.2rem; padding-right: 1.2rem; }
       .hero { padding-bottom: 9rem; }
       .scroll-cue { display: none; }
-      .hero-title em { padding-left: 0.3em; }
+      .hero-title {
+        font-size: clamp(2.1rem, 8.8vw, 3.2rem);
+        line-height: 1.32;
+      }
+      .hero-line-2 em { padding-left: 0.35em; }
+      .hero-line-3 { padding-left: 0.7em; }
       .profile-table th, .profile-table td { display: block; width: 100%; padding: 0.4rem 0.3rem; }
       .profile-table th { padding-top: 1.3rem; }
       .profile-table td { padding-bottom: 1.3rem; }
@@ -807,7 +828,12 @@
     <div class="hero-parallax" id="heroParallax">
       <div class="hero-content">
         <span class="hero-sub hero-in" style="--d:.1s">Botanical &amp; Wild Mountain</span>
-        <h1 class="hero-title split" id="heroTitle">ありのままの<br><em>岩手の自然で</em>遊ぶ。</h1>
+        <!-- 3段構成に美しく整えたタイトル -->
+        <h1 class="hero-title split" id="heroTitle">
+          <span class="hero-line-1">ありのままの</span><br>
+          <span class="hero-line-2"><em>岩手の自然で</em></span><br>
+          <span class="hero-line-3">遊ぶ。</span>
+        </h1>
         <p class="hero-desc hero-in" style="--d:1.2s">
           岩手県久慈市夏井町鳥谷。五感で味わう体験空間「くじやまフィールド」。キャンプ＆BBQ、野生味あふれる植物栽培、そして滋味豊かな原木きのこが息づく場所。
         </p>
