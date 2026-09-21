@@ -1,6 +1,15 @@
 {
   "items": [
     {
+      "id": "field",
+      "title": "くじやまフィールド",
+      "tag": "OUTDOOR & BBQ",
+      "description": "広大な山林を開拓し、自然の植生をそのまま体感できるアウトドア・バーベキュー場を整備。日常を離れ、森の息吹と採れたての素材を直に楽しむフィールドを創出します。",
+      "image": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
+      "video_url": "",
+      "lp_url": "/field/"
+    },
+    {
       "id": "botanical",
       "title": "ボタニカル＆花卉栽培",
       "tag": "BOTANICAL & CRAFT",
@@ -17,15 +26,6 @@
       "image": "https://images.unsplash.com/photo-1543158266-0066955047b1?auto=format&fit=crop&w=800&q=80",
       "video_url": "",
       "lp_url": "/mushroom/"
-    },
-    {
-      "id": "field",
-      "title": "くじやまフィールド",
-      "tag": "OUTDOOR & BBQ",
-      "description": "広大な山林を開拓し、自然の植生をそのまま体感できるアウトドア・バーベキュー場を整備。日常を離れ、森の息吹と採れたての素材を直に楽しむフィールドを創出します。",
-      "image": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
-      "video_url": "",
-      "lp_url": "/field/"
     }
   ]
 }
