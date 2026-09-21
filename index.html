@@ -462,7 +462,7 @@
     .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
     /* ============================================================
-       シネマティック上下スリット開閉 ポップアップ（PC/スマホ完全対応）
+       シネマティック上下スリット開閉 ポップアップ（幾何学テクスチャ版）
        ============================================================ */
     .shutter-modal {
       position: fixed;
@@ -482,12 +482,12 @@
     .shutter-modal.active {
       pointer-events: auto;
       visibility: visible;
-      background: rgba(10, 18, 10, 0.78);
+      background: rgba(10, 18, 10, 0.82);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
 
-    /* ウィンドウ本体：PCでも確実に上下に割れて開く */
+    /* ウィンドウ本体：幾何学テクスチャ背景と上端ゴールドライン */
     .modal-container {
       position: relative;
       z-index: 2;
@@ -495,12 +495,21 @@
       max-width: 840px;
       max-height: 86vh;
       overflow-y: auto;
-      background: linear-gradient(180deg, #1c301e 0%, #122013 100%);
-      border: 1px solid rgba(246, 243, 224, 0.25);
+      border: 1px solid rgba(246, 243, 224, 0.22);
       border-radius: 14px;
       padding: clamp(2.2rem, 5vw, 4rem);
       color: #f6f3e0;
-      box-shadow: 0 40px 90px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(242, 221, 142, 0.15);
+      box-shadow: 0 40px 90px -15px rgba(0, 0, 0, 0.85);
+
+      /* ベースの深緑グラデーション */
+      background-color: #172718;
+      background-image: 
+        /* 右上から差す柔らかい光彩 */
+        radial-gradient(ellipse at 85% 0%, rgba(90, 122, 58, 0.25) 0%, transparent 60%),
+        /* 繊細な幾何学ダイヤモンド・グリッド（上品に薄く表示） */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M24 0 L48 24 L24 48 L0 24 Z' fill='none' stroke='%23f2dd8e' stroke-width='0.6' stroke-opacity='0.08'/%3E%3Ccircle cx='24' cy='24' r='1.5' fill='%23f2dd8e' fill-opacity='0.1'/%3E%3C/svg%3E"),
+        linear-gradient(180deg, #1b2e1c 0%, #111e12 100%);
+      background-size: auto, 48px 48px, auto;
       
       /* GPUアクセラレーションの強制 */
       transform: translateZ(0);
@@ -509,61 +518,41 @@
       /* 初期状態：上下中央の1本の線に畳まれている */
       clip-path: inset(50% 0% 50% 0% round 14px);
       opacity: 0;
-      transition: clip-path 1s cubic-bezier(0.19, 1, 0.22, 1),
+      transition: clip-path 0.95s cubic-bezier(0.19, 1, 0.22, 1),
                   opacity 0.4s ease,
-                  transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+                  transform 0.95s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
     .shutter-modal.active .modal-container {
-      /* 開放状態：上下0%まで1秒かけて完全に視界が開く */
+      /* 開放状態：上下0%まで1秒弱かけて視界がパカッと開く */
       clip-path: inset(0% 0% 0% 0% round 14px);
       opacity: 1;
     }
 
-    /* PCでも視界の開きを目撃させる「上下スリット光彩ライン」 */
-    .modal-container::before,
-    .modal-container::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent 0%, #f2dd8e 30%, #fff 50%, #f2dd8e 70%, transparent 100%);
-      box-shadow: 0 0 20px #f2dd8e, 0 0 40px rgba(242, 221, 142, 0.8);
-      z-index: 100;
-      pointer-events: none;
-      opacity: 0;
-      /* 上下へ移動するアニメーションをclip-pathと完全に同期 */
-      transition: top 1s cubic-bezier(0.19, 1, 0.22, 1),
-                  bottom 1s cubic-bezier(0.19, 1, 0.22, 1),
-                  opacity 0.5s ease;
-    }
-    /* 最初は真ん中に合わさっている */
+    /* ウィンドウ最上部に固定された洗練のゴールドライン（文章を絶対に邪魔しない） */
     .modal-container::before {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .modal-container::after {
-      bottom: 50%;
-      transform: translateY(50%);
-    }
-    /* 開くと同時に上下端へと走り去る */
-    .shutter-modal.active .modal-container::before {
-      top: 0%;
-      opacity: 0.9;
-    }
-    .shutter-modal.active .modal-container::after {
-      bottom: 0%;
-      opacity: 0.9;
+      content: '';
+      position: sticky;
+      top: -2.2rem;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 2px;
+      margin-top: -2.2rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(90deg, transparent 0%, rgba(242, 221, 142, 0.4) 15%, #f2dd8e 50%, rgba(242, 221, 142, 0.4) 85%, transparent 100%);
+      box-shadow: 0 0 12px rgba(242, 221, 142, 0.6);
+      z-index: 20;
+      pointer-events: none;
     }
 
     /* 中身の文字・画像も遅れてフワッと浮かび上がるシネマ演出 */
-    .modal-container > * {
+    .modal-container > *:not(.modal-close-btn) {
       opacity: 0;
-      transform: translateY(15px);
-      transition: opacity 0.6s ease 0.35s, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease 0.3s, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s;
     }
-    .shutter-modal.active .modal-container > * {
+    .shutter-modal.active .modal-container > *:not(.modal-close-btn) {
       opacity: 1;
       transform: translateY(0);
     }
@@ -710,6 +699,7 @@
       .profile-table th, .profile-table td { display: block; width: 100%; padding: 0.4rem 0.3rem; }
       .profile-table th { padding-top: 1.3rem; }
       .profile-table td { padding-bottom: 1.3rem; }
+      .modal-container::before { top: -1.6rem; margin-top: -1.6rem; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
