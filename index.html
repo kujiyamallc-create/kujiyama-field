@@ -462,7 +462,7 @@
     .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
     /* ============================================================
-       シネマティック上下スリット開閉 ポップアップ（右上5本スラッシュ版）
+       シネマティック上下スリット開閉 ポップアップ（木漏れ日光芒・追従版）
        ============================================================ */
     .shutter-modal {
       position: fixed;
@@ -501,8 +501,8 @@
       color: #f6f3e0;
       box-shadow: 0 40px 90px -15px rgba(0, 0, 0, 0.85);
 
-      /* 背景ベース（深緑グラデーション） */
-      background: linear-gradient(180deg, #192a1a 0%, #101c11 100%);
+      /* ベース背景（自然な深緑グラデーション） */
+      background: linear-gradient(180deg, #182a1a 0%, #101c11 100%);
       
       /* GPUアクセラレーション */
       transform: translateZ(0);
@@ -522,27 +522,39 @@
       opacity: 1;
     }
 
-    /* 右上から左下に向かう5本の繊細なスラッシュライン（フェードアウト） */
-    .modal-container::after {
-      content: '';
-      position: absolute;
+    /* スクロールしても常に右上に追従する木漏れ日の光芒（日差し） */
+    .modal-sunlight-anchor {
+      position: sticky;
       top: 0;
-      right: 0;
-      width: 320px;
-      height: 320px;
-      pointer-events: none;
+      width: 100%;
+      height: 0;
+      margin: 0;
+      padding: 0;
       z-index: 0;
-      /* 5本の等間隔ストライプ（幅1.5px、間隔18px） */
-      background: repeating-linear-gradient(
-        -45deg,
-        rgba(242, 221, 142, 0.18) 0px,
-        rgba(242, 221, 142, 0.18) 1.5px,
-        transparent 1.5px,
-        transparent 18px
-      );
-      /* 右上から左下に向かって滑らかにフェードアウト */
-      -webkit-mask-image: radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 45%, transparent 75%);
-      mask-image: radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 45%, transparent 75%);
+      pointer-events: none;
+    }
+    .modal-sunlight {
+      position: absolute;
+      top: -2.2rem;
+      right: -2.2rem;
+      width: 360px;
+      height: 360px;
+      pointer-events: none;
+      filter: blur(22px);
+      opacity: 0.35;
+      mix-blend-mode: screen;
+      /* 右上から左下へ差し込む5本のソフトな光芒ストライプ */
+      background: 
+        radial-gradient(ellipse at 100% 0%, rgba(242, 221, 142, 0.6) 0%, rgba(242, 221, 142, 0.2) 40%, transparent 80%),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255, 245, 190, 0.35) 0px,
+          rgba(255, 245, 190, 0.35) 12px,
+          transparent 12px,
+          transparent 32px
+        );
+      -webkit-mask-image: radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 80%);
+      mask-image: radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 80%);
     }
 
     /* ウィンドウ最上部に固定された洗練のゴールド天面ライン */
@@ -563,14 +575,14 @@
     }
 
     /* 中身の文字・画像も遅れてフワッと浮かび上がるシネマ演出 */
-    .modal-container > *:not(.modal-close-btn) {
+    .modal-content-wrap > * {
       position: relative;
       z-index: 1;
       opacity: 0;
       transform: translateY(12px);
       transition: opacity 0.6s ease 0.3s, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s;
     }
-    .shutter-modal.active .modal-container > *:not(.modal-close-btn) {
+    .shutter-modal.active .modal-content-wrap > * {
       opacity: 1;
       transform: translateY(0);
     }
@@ -718,7 +730,7 @@
       .profile-table th { padding-top: 1.3rem; }
       .profile-table td { padding-bottom: 1.3rem; }
       .modal-container::before { top: -1.6rem; margin-top: -1.6rem; }
-      .modal-container::after { width: 220px; height: 220px; }
+      .modal-sunlight { width: 260px; height: 260px; top: -1.6rem; right: -1.6rem; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
@@ -1022,23 +1034,31 @@
   <!-- 上下に視界が開けるシネマティック・ポップアップウィンドウ（モーダル） -->
   <div class="shutter-modal" id="shutterModal" aria-hidden="true" role="dialog">
     <div class="modal-container" id="modalContainer">
+      
+      <!-- スクロールしても常に右上に追従する木漏れ日・日差し -->
+      <div class="modal-sunlight-anchor" aria-hidden="true">
+        <div class="modal-sunlight"></div>
+      </div>
+
       <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="閉じる">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
       
-      <div class="modal-tag" id="modalTag">ABOUT</div>
-      <h3 class="modal-title" id="modalTitle">タイトル</h3>
-      <div class="modal-img-wrap">
-        <img id="modalImg" src="" alt="モーダル画像">
-      </div>
-      <div class="modal-body-text" id="modalBody">本文</div>
-      
-      <div class="modal-cta-box">
-        <span style="font-size:0.85rem; color:#b9c8ad;" id="modalCtaNote">ご予約や素材の仕入れなど、お気軽にお問い合わせください。</span>
-        <a href="mailto:info@kujiyama.com" class="modal-cta-btn" id="modalCtaBtn">
-          <span id="modalCtaText">お問い合わせ・相談</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
+      <div class="modal-content-wrap">
+        <div class="modal-tag" id="modalTag">ABOUT</div>
+        <h3 class="modal-title" id="modalTitle">タイトル</h3>
+        <div class="modal-img-wrap">
+          <img id="modalImg" src="" alt="モーダル画像">
+        </div>
+        <div class="modal-body-text" id="modalBody">本文</div>
+        
+        <div class="modal-cta-box">
+          <span style="font-size:0.85rem; color:#b9c8ad;" id="modalCtaNote">ご予約や素材の仕入れなど、お気軽にお問い合わせください。</span>
+          <a href="mailto:info@kujiyama.com" class="modal-cta-btn" id="modalCtaBtn">
+            <span id="modalCtaText">お問い合わせ・相談</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
