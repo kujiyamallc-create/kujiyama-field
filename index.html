@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>合同会社くじやま | KUJIYAMA FIELD</title>
-  <meta name="description" content="岩手県久慈市。植物栽培・原木きのこ・アウトドアフィールドの創造。合同会社くじやま公式ポータル。">
+  <title>KUJIYAMA FIELD | 自然と大地を五感で味わうフィールド</title>
+  <meta name="description" content="岩手県久慈市夏井町鳥谷。広大な山林で展開する「くじやまキャンプ＆BBQ」「くじやまフラワー＆ボタニカル」「くじやま原木きのこ」。くじやまフィールド公式ポータル。">
 
   <!-- Google Fonts: 縦長極太ゴシック Oswald を採用 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Noto+Sans+JP:wght@300;400;500;700&family=Oswald:wght@600;700&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
   
+  <!-- ファビコン -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
   <style>
     /* ============================================================
        Design tokens
@@ -118,11 +121,11 @@
     .brand-text-wrap {
       display: flex;
       flex-direction: column;
-      line-height: 1;
+      line-height: 1.1;
     }
     .brand-text {
       font-family: var(--brand);
-      font-size: 1.55rem;
+      font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -156,7 +159,6 @@
       display: flex; align-items: center; overflow: hidden; padding: 8rem 0 12rem;
       background: linear-gradient(180deg, #223720 0%, #33502c 46%, #4b6c38 100%);
     }
-    .hero-video-bg { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); z-index: 0; object-fit: cover; opacity: 0.4; }
     .sunglow { position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(60vmax 46vmax at 88% -8%, var(--sun), transparent 62%); opacity: 0.5; animation: glow 11s ease-in-out infinite alternate; }
     @keyframes glow { to { opacity: 0.72; transform: scale(1.06); } }
     .shafts { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
@@ -172,17 +174,18 @@
     .hero-content { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem); }
     .hero-sub { display: inline-flex; align-items: center; gap: 1rem; font-family: var(--latin); font-style: italic; font-weight: 600; font-size: clamp(1.1rem, 2vw, 1.5rem); color: #efe3a4; letter-spacing: 0.08em; margin-bottom: 2rem; }
     .hero-sub::before { content: ''; width: 3.2rem; height: 1px; background: #efe3a4; }
-    .hero-title { font-family: var(--serif); font-weight: 800; font-size: clamp(2.7rem, 9vw, 8rem); line-height: 1.22; letter-spacing: 0.06em; margin-bottom: 2.6rem; color: var(--h-text); text-shadow: 0 4px 40px rgba(10, 24, 8, 0.35); }
-    .hero-title em { font-style: normal; display: inline-block; padding-left: 1.1em; }
+    .hero-title { font-family: var(--serif); font-weight: 800; font-size: clamp(2.7rem, 8.5vw, 7.5rem); line-height: 1.24; letter-spacing: 0.06em; margin-bottom: 2.6rem; color: var(--h-text); text-shadow: 0 4px 40px rgba(10, 24, 8, 0.35); }
+    .hero-title em { font-style: normal; display: inline-block; padding-left: 0.8em; }
 
     .cw { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.06em 0 0.12em; margin: -0.06em 0 -0.12em; }
     .ch { display: inline-block; transform: translateY(118%) rotate(7deg); transform-origin: 0 100%; transition: transform 1.1s var(--ease); transition-delay: calc(var(--i) * 65ms + 0.25s); }
     .split.in .ch { transform: none; }
 
-    .hero-desc { font-size: clamp(0.95rem, 1.4vw, 1.08rem); color: var(--h-muted); max-width: 36em; margin-bottom: 3rem; }
+    .hero-desc { font-size: clamp(0.95rem, 1.4vw, 1.08rem); color: var(--h-muted); max-width: 38em; margin-bottom: 3rem; }
     .hero-in { opacity: 0; transform: translateY(26px); transition: opacity 1s var(--ease) var(--d, 0s), transform 1s var(--ease) var(--d, 0s); }
     body.ready .hero-in { opacity: 1; transform: none; }
 
+    .hero-btn-group { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; }
     .hero-btn {
       display: inline-flex; align-items: center; gap: 1rem; padding: 1.05rem 2.6rem; color: var(--h-text); text-decoration: none;
       font-size: 0.92rem; font-weight: 500; letter-spacing: 0.18em; border: 1px solid rgba(246, 243, 224, 0.55); border-radius: 60px;
@@ -191,8 +194,7 @@
     .hero-btn::before { content: ''; position: absolute; inset: 0; z-index: -1; background: #f2e6a8; transform: translateY(101%); border-radius: 50% 50% 0 0 / 100% 100% 0 0; transition: transform 0.6s var(--ease), border-radius 0.6s var(--ease); }
     .hero-btn:hover { color: #1f2f1c; border-color: #f2e6a8; }
     .hero-btn:hover::before { transform: none; border-radius: 0; }
-    .hero-btn svg { transition: transform 0.4s var(--ease); }
-    .hero-btn:hover svg { transform: translateX(5px); }
+    .hero-btn.btn-sub { border-color: rgba(246, 243, 224, 0.3); background: rgba(246, 243, 224, 0.08); }
 
     .ridges { position: absolute; left: 0; right: 0; bottom: -1px; height: 38vh; min-height: 240px; z-index: 2; pointer-events: none; }
     .ridges svg { position: absolute; left: -2%; bottom: 0; width: 104%; height: 100%; will-change: transform; }
@@ -204,9 +206,9 @@
     .scroll-cue::after { content: ''; width: 1px; height: 64px; background: linear-gradient(var(--moss), transparent); transform-origin: top; animation: cue 2.4s var(--ease) infinite; }
     @keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
 
-    /* ---------- メイン ---------- */
+    /* ---------- メインセクション ---------- */
     main { max-width: 1240px; margin: 0 auto; padding: 4rem clamp(1.5rem, 5vw, 4rem) 6rem; }
-    .section-header { margin-bottom: 4rem; display: flex; align-items: baseline; gap: 1.6rem; flex-wrap: wrap; scroll-margin-top: 90px; }
+    .section-header { margin-bottom: 3.6rem; display: flex; align-items: baseline; gap: 1.6rem; flex-wrap: wrap; scroll-margin-top: 90px; }
     .section-tag { font-family: var(--latin); font-style: italic; font-weight: 600; font-size: 1.25rem; color: var(--moss); letter-spacing: 0.08em; }
     .section-title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; letter-spacing: 0.1em; line-height: 1.4; color: var(--moss-deep); }
     .section-header .rule { flex: 1 1 80px; height: 1px; background: var(--line-strong); transform: scaleX(0); transform-origin: 0 50%; transition: transform 1.6s var(--ease) 0.3s; align-self: center; min-width: 60px; }
@@ -215,7 +217,77 @@
     .reveal { opacity: 0; transform: translateY(46px); transition: opacity 1.1s var(--ease) var(--d, 0s), transform 1.1s var(--ease) var(--d, 0s); }
     .reveal.in { opacity: 1; transform: none; }
 
-    /* 事業カード */
+    /* ---------- くじやまとは (About Field) ---------- */
+    .concept-panel {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: clamp(2.5rem, 5vw, 4.5rem);
+      margin-bottom: 8rem;
+      box-shadow: 0 18px 40px -22px rgba(47, 68, 38, 0.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    @media (max-width: 960px) {
+      .concept-panel { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    .concept-lead {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      font-weight: 700;
+      line-height: 1.7;
+      color: var(--moss-deep);
+      margin-bottom: 1.8rem;
+    }
+    .concept-p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 2.1;
+      margin-bottom: 2.2rem;
+    }
+    .open-modal-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--moss-deep);
+      background: none;
+      border: none;
+      border-bottom: 2px solid var(--moss);
+      padding-bottom: 4px;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .open-modal-trigger:hover {
+      color: var(--moss);
+      border-color: var(--sun);
+    }
+    .concept-visual {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: 0 14px 34px -14px rgba(20, 35, 15, 0.4);
+    }
+    .concept-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease);
+    }
+    .concept-panel:hover .concept-visual img {
+      transform: scale(1.05);
+    }
+
+    /* ---------- 3つのカテゴリーカード ---------- */
     .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.2rem; align-items: start; margin-bottom: 8rem; }
     @media (min-width: 960px) {
       .cards-grid { grid-template-columns: repeat(3, 1fr); padding-bottom: 4rem; }
@@ -231,10 +303,11 @@
 
     .modern-card {
       --mx: 50%; --my: 50%;
-      position: relative; overflow: hidden; height: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+      position: relative; overflow: hidden; height: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 14px;
       padding: 0 0 2.6rem; box-shadow: 0 18px 40px -22px rgba(47, 68, 38, 0.35);
       backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
       transition: transform 0.35s var(--ease), border-color 0.4s; transform-style: preserve-3d; will-change: transform;
+      cursor: pointer;
     }
     .modern-card::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(360px circle at var(--mx) var(--my), var(--spot), transparent 65%); opacity: 0; transition: opacity 0.5s; }
     .modern-card:hover { border-color: var(--moss); }
@@ -265,8 +338,25 @@
     .icon { width: 50px; height: 50px; color: var(--moss); stroke: currentColor; fill: none; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 1.4rem; overflow: visible; position: relative; }
     .icon path { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2s cubic-bezier(0.6, 0.1, 0.2, 1) 0.35s; }
     .reveal.in .icon path { stroke-dashoffset: 0; }
+    .card-cat { font-family: var(--latin); font-style: italic; font-size: 0.9rem; color: var(--moss); margin-bottom: 0.3rem; }
     .card-title { font-family: var(--serif); font-size: 1.45rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1.5; color: var(--moss-deep); position: relative; }
-    .card-text { color: var(--muted); font-size: 0.94rem; line-height: 2; position: relative; }
+    .card-text { color: var(--muted); font-size: 0.93rem; line-height: 2; position: relative; margin-bottom: 1.6rem; }
+
+    .card-cta-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--moss-deep);
+      letter-spacing: 0.1em;
+    }
+    .card-cta-hint svg {
+      transition: transform 0.3s var(--ease);
+    }
+    .modern-card:hover .card-cta-hint svg {
+      transform: translateX(5px);
+    }
 
     /* ---------- 写真ギャラリー ---------- */
     .gallery-grid {
@@ -318,19 +408,17 @@
       opacity: 1;
       transform: translateY(0);
     }
-    .g-w-6 { grid-column: span 6; height: 380px; }
-    .g-w-3 { grid-column: span 3; height: 380px; }
-    .g-w-4 { grid-column: span 4; height: 320px; }
     .g-w-8 { grid-column: span 8; height: 320px; }
+    .g-w-4 { grid-column: span 4; height: 320px; }
 
     @media (max-width: 900px) {
-      .g-w-6, .g-w-3, .g-w-4, .g-w-8 { grid-column: span 6; height: 260px; }
+      .g-w-8, .g-w-4 { grid-column: span 6; height: 260px; }
     }
     @media (max-width: 600px) {
-      .g-w-6, .g-w-3, .g-w-4, .g-w-8 { grid-column: span 12; height: 240px; }
+      .g-w-8, .g-w-4 { grid-column: span 12; height: 240px; }
     }
 
-    /* 会社概要 */
+    /* ---------- 運営会社概要 ---------- */
     .profile-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 2.5rem clamp(1.5rem, 4vw, 3.5rem); margin-bottom: 4rem; box-shadow: 0 18px 40px -22px rgba(47, 68, 38, 0.35); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
     .profile-table { width: 100%; border-collapse: collapse; }
     .profile-table tr { border-bottom: 1px solid var(--line); transition: background 0.5s; }
@@ -353,7 +441,7 @@
       --fx: 50%; --fy: 50%;
       font-family: var(--brand);
       font-weight: 700;
-      font-size: clamp(4rem, 19vw, 16rem);
+      font-size: clamp(3.2rem, 15vw, 13rem);
       line-height: 0.85;
       letter-spacing: 0.04em;
       margin-bottom: 2.2rem;
@@ -372,6 +460,160 @@
     /* ---------- トースト ---------- */
     .toast { position: fixed; left: 50%; bottom: calc(2rem + env(safe-area-inset-bottom, 0px)); z-index: 1000001; transform: translate(-50%, 30px); opacity: 0; pointer-events: none; padding: 0.8rem 1.6rem; border-radius: 60px; font-family: var(--serif); font-size: 0.9rem; letter-spacing: 0.14em; background: #f2f1e2; color: #2f4426; border: 1px solid #5a7a3a; box-shadow: 0 10px 40px rgba(20, 40, 15, 0.3); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); }
     .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    /* ============================================================
+       上下シャッター ポップアップ（モーダル）
+       ============================================================ */
+    .shutter-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(1rem, 4vw, 3rem);
+      pointer-events: none;
+      visibility: hidden;
+      transition: visibility 0.8s;
+    }
+    .shutter-modal.active {
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    /* 上下シャッターブレード */
+    .shutter-blade-top, .shutter-blade-bottom {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      height: 50.5%;
+      background: #152214;
+      z-index: 1;
+      transition: transform 0.75s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    .shutter-blade-top {
+      top: 0;
+      transform: translateY(-100%);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    .shutter-blade-bottom {
+      bottom: 0;
+      transform: translateY(100%);
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+    }
+    .shutter-modal.active .shutter-blade-top,
+    .shutter-modal.active .shutter-blade-bottom {
+      transform: translateY(0);
+    }
+
+    /* モーダルコンテンツ */
+    .modal-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 780px;
+      max-height: 85vh;
+      overflow-y: auto;
+      background: #1b2d1c;
+      border: 1px solid rgba(246, 243, 224, 0.25);
+      border-radius: 16px;
+      padding: clamp(2rem, 5vw, 3.8rem);
+      color: #f6f3e0;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transform: scale(0.92) translateY(20px);
+      transition: opacity 0.5s ease 0.35s, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s;
+    }
+    .shutter-modal.active .modal-container {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(246, 243, 224, 0.08);
+      border: 1px solid rgba(246, 243, 224, 0.3);
+      color: #f6f3e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .modal-close-btn:hover {
+      background: rgba(246, 243, 224, 0.2);
+      transform: rotate(90deg);
+    }
+
+    .modal-tag {
+      font-family: var(--latin);
+      font-style: italic;
+      color: #efe3a4;
+      font-size: 1.15rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.6rem;
+    }
+    .modal-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.35;
+      color: #ffffff;
+      margin-bottom: 1.8rem;
+    }
+    .modal-img-wrap {
+      width: 100%;
+      height: 280px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(246, 243, 224, 0.2);
+    }
+    .modal-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .modal-body-text {
+      color: #d1dcc5;
+      font-size: 1rem;
+      line-height: 2.1;
+      margin-bottom: 2.8rem;
+      white-space: pre-line;
+    }
+    .modal-cta-box {
+      border-top: 1px solid rgba(246, 243, 224, 0.2);
+      padding-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .modal-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1.1rem 2.6rem;
+      background: #f2e6a8;
+      color: #1a2a18;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 60px;
+      letter-spacing: 0.12em;
+      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    }
+    .modal-cta-btn:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(242, 230, 168, 0.3);
+    }
 
     /* ---------- パスワード保護 ---------- */
     #lock-screen {
@@ -423,7 +665,7 @@
       .nav-header { padding-left: 1.2rem; padding-right: 1.2rem; }
       .hero { padding-bottom: 9rem; }
       .scroll-cue { display: none; }
-      .hero-title em { padding-left: 0.5em; }
+      .hero-title em { padding-left: 0.3em; }
       .profile-table th, .profile-table td { display: block; width: 100%; padding: 0.4rem 0.3rem; }
       .profile-table th { padding-top: 1.3rem; }
       .profile-table td { padding-bottom: 1.3rem; }
@@ -473,14 +715,15 @@
         <circle cx="24" cy="20" r="2.2" fill="currentColor"/>
       </svg>
       <div class="brand-text-wrap">
-        <span class="brand-text">KUJIYAMA</span>
-        <span class="brand-sub">合同会社くじやま / IWATE</span>
+        <span class="brand-text">KUJIYAMA FIELD</span>
+        <span class="brand-sub">KUJI, IWATE / 運営：合同会社くじやま</span>
       </div>
     </a>
     <nav class="nav-links">
-      <a href="#services" class="scramble">事業案内</a>
+      <a href="#about-field" class="scramble">くじやまとは</a>
+      <a href="#categories" class="scramble">フィールド案内</a>
       <a href="#gallery" class="scramble">風景・素材</a>
-      <a href="#about" class="scramble">会社概要</a>
+      <a href="#company" class="scramble">会社概要</a>
       <a href="#contact" class="scramble">お問い合わせ</a>
     </nav>
   </header>
@@ -500,21 +743,24 @@
 
     <div class="hero-parallax" id="heroParallax">
       <div class="hero-content">
-        <span class="hero-sub hero-in" style="--d:.1s">Botanical &amp; Wild Earth</span>
-        <h1 class="hero-title split" id="heroTitle">自然の息吹を、<br><em>暮らしの美学</em>へ。</h1>
+        <span class="hero-sub hero-in" style="--d:.1s">Botanical &amp; Wild Mountain</span>
+        <h1 class="hero-title split" id="heroTitle">森の鼓動と、<br><em>大地の恵み</em>を遊ぶ。</h1>
         <p class="hero-desc hero-in" style="--d:1.2s">
-          岩手県久慈市。手つかずの豊かな自然から生まれる山野草・花卉の栽培、原木きのこの育成、そして大地をダイレクトに五感で味わうアウトドアフィールドの創造。
+          岩手県久慈市夏井町鳥谷。広大な山林を拓き、大地をまるごと五感で味わう体験空間「くじやまフィールド」。キャンプ＆BBQ、野生味あふれる花卉栽培、そして滋味豊かな原木きのこが息づく場所。
         </p>
-        <div class="hero-in" style="--d:1.4s">
-          <a href="#services" class="hero-btn magnetic">
+        <div class="hero-in hero-btn-group" style="--d:1.4s">
+          <a href="#categories" class="hero-btn magnetic">
             <span class="scramble">EXPLORE FIELD</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
+          <button type="button" class="hero-btn btn-sub magnetic" data-open-modal="about-field">
+            <span>くじやまとは</span>
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- 赤松の稜線（洗練されたシルエット） -->
+    <!-- 赤松の稜線シルエット -->
     <div class="ridges" aria-hidden="true">
       <svg class="r1" viewBox="0 0 1440 300" preserveAspectRatio="none" data-depth="0.5"><path id="tree1" d=""/></svg>
       <svg class="r2" viewBox="0 0 1440 300" preserveAspectRatio="none" data-depth="1"><path id="tree2" d=""/></svg>
@@ -525,67 +771,102 @@
   </section>
 
   <main>
-    <!-- 事業紹介 -->
-    <div class="section-header" id="services">
-      <span class="section-tag">Our Business</span>
-      <h2 class="section-title split">事業案内</h2>
+    <!-- くじやまとは (Concept) -->
+    <div class="section-header" id="about-field">
+      <span class="section-tag">About Kujiyama Field</span>
+      <h2 class="section-title split">くじやまとは</h2>
+      <span class="rule"></span>
+    </div>
+
+    <div class="concept-panel reveal">
+      <div class="concept-text-wrap">
+        <h3 class="concept-lead">岩手・久慈の山林を開拓し、<br>大地本来の循環を体感する拠点。</h3>
+        <p class="concept-p">
+          「くじやまフィールド」は、岩手県久慈市夏井町鳥谷に広がる山林拠点をベースに、手つかずの自然と人が心地よく共鳴する場所として創り上げられています。<br>
+          赤松が生い茂り、四季折々の野草が芽吹く森の中で、木々の間を吹き抜ける風、原木が育む滋味、そして土に触れる喜び。消費するだけのアウトドアではなく、森の命を分かち合う3つの体験をお届けします。
+        </p>
+        <button type="button" class="open-modal-trigger" data-open-modal="about-field">
+          <span>「くじやまの思想とビジョン」を読む</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+      <div class="concept-visual">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80" alt="久慈の美しい森" loading="lazy" decoding="async">
+      </div>
+    </div>
+
+    <!-- 3大カテゴリー紹介 -->
+    <div class="section-header" id="categories">
+      <span class="section-tag">Three Categories</span>
+      <h2 class="section-title split">フィールド案内</h2>
       <span class="rule"></span>
     </div>
 
     <div class="cards-grid">
-      <!-- 1: 左＝くじやまフィールド（BBQ・アウトドア） -->
+      <!-- 1: くじやまキャンプ＆BBQ -->
       <div class="reveal stair-1" style="--d:0s">
         <div class="float-1">
-          <article class="modern-card">
+          <article class="modern-card" data-open-modal="camp-bbq">
             <div class="card-thumb">
-              <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80" alt="くじやまフィールド" loading="lazy" decoding="async">
+              <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80" alt="くじやまキャンプ＆BBQ" loading="lazy" decoding="async">
             </div>
             <div class="card-body">
+              <span class="card-cat">Outdoor &amp; Camp</span>
               <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
                 <path pathLength="1" d="M6 56 L32 10 L58 56 Z"/>
                 <path pathLength="1" d="M32 56 L32 38 M32 38 L23 56 M32 38 L41 56"/>
                 <path pathLength="1" d="M2 60 H62"/>
               </svg>
-              <h3 class="card-title">くじやまフィールド</h3>
+              <h3 class="card-title">くじやまキャンプ＆BBQ</h3>
               <p class="card-text">
-                広大な山林を開拓し、自然の植生をそのまま体感できるアウトドア・バーベキュー場を整備。日常を離れ、森の息吹と採れたての素材を直に楽しむフィールドを創出します。
+                山林を切り拓いたプライベート感あふれるアウトドアフィールド。森の澄んだ空気とともに、採れたての食材を豪快に味わう格別のひととき。
               </p>
+              <div class="card-cta-hint">
+                <span>詳しく見る</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
             </div>
           </article>
         </div>
       </div>
 
-      <!-- 2: 中央＝ボタニカル＆花卉栽培 -->
+      <!-- 2: くじやまフラワー＆ボタニカル -->
       <div class="reveal stair-2" style="--d:.15s">
         <div class="float-2">
-          <article class="modern-card">
+          <article class="modern-card" data-open-modal="flower-botanical">
             <div class="card-thumb">
-              <img src="https://images.unsplash.com/photo-1508615039623-a25605d2b022?auto=format&fit=crop&w=800&q=80" alt="ボタニカル＆花卉栽培" loading="lazy" decoding="async">
+              <img src="https://images.unsplash.com/photo-1508615039623-a25605d2b022?auto=format&fit=crop&w=800&q=80" alt="くじやまフラワー＆ボタニカル" loading="lazy" decoding="async">
             </div>
             <div class="card-body">
+              <span class="card-cat">Botanical &amp; Dried Flower</span>
               <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
                 <path pathLength="1" d="M32 60 C32 42 32 28 32 6"/>
                 <path pathLength="1" d="M32 46 C22 46 16 40 14 32 C24 32 30 37 32 46"/>
                 <path pathLength="1" d="M32 35 C42 35 48 29 50 21 C40 21 34 26 32 35"/>
                 <path pathLength="1" d="M32 23 C26 22 22 18 21 12 C27 13 31 17 32 23"/>
               </svg>
-              <h3 class="card-title">ボタニカル＆花卉栽培</h3>
+              <h3 class="card-title">くじやまフラワー＆ボタニカル</h3>
               <p class="card-text">
-                アナベル、スモークツリー、各種ハーブなどのドライフラワー・リース素材の栽培。山野に自生する葛やクマヤナギなどの自然蔓を活かしたオリジナルベースやスワッグを展開します。
+                アナベルやスモークツリー、各種ハーブなどのドライフラワー素材を栽培。山野に自生する山葡萄や葛などの天然蔓を編み上げたリースベースを展開。
               </p>
+              <div class="card-cta-hint">
+                <span>詳しく見る</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
             </div>
           </article>
         </div>
       </div>
 
-      <!-- 3: 右＝原木きのこ栽培 -->
+      <!-- 3: くじやま原木きのこ -->
       <div class="reveal stair-3" style="--d:.3s">
         <div class="float-3">
-          <article class="modern-card">
+          <article class="modern-card" data-open-modal="mushrooms">
             <div class="card-thumb">
-              <img src="https://images.unsplash.com/photo-1543158266-0066955047b1?auto=format&fit=crop&w=800&q=80" alt="原木きのこ栽培" loading="lazy" decoding="async">
+              <img src="https://images.unsplash.com/photo-1543158266-0066955047b1?auto=format&fit=crop&w=800&q=80" alt="くじやま原木きのこ" loading="lazy" decoding="async">
             </div>
             <div class="card-body">
+              <span class="card-cat">Log Mushroom Culture</span>
               <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
                 <path pathLength="1" d="M8 36 C8 21 19 9 32 9 C45 9 56 21 56 36 Z"/>
                 <path pathLength="1" d="M25 36 C26 45 25 52 23 57 L41 57 C39 52 38 45 39 36"/>
@@ -593,17 +874,21 @@
                 <path pathLength="1" d="M36 19 a2.6 2.6 0 1 0 0.01 0"/>
                 <path pathLength="1" d="M44 29 a2 2 0 1 0 0.01 0"/>
               </svg>
-              <h3 class="card-title">原木きのこ栽培</h3>
+              <h3 class="card-title">くじやま原木きのこ</h3>
               <p class="card-text">
-                久慈の豊かな森林資源を活かした原木シイタケ、マイタケ、ナメコの育成。じっくりと時間をかけて菌糸を巡らせ、原木栽培ならではの芳醇な香りと力強い旨味を届けます。
+                久慈の豊かな森林原木に菌糸を打ち込み、自然の巡りに合わせてじっくり育てるシイタケ、マイタケ、ナメコ。肉厚で芳醇な本物の滋味をお届けします。
               </p>
+              <div class="card-cta-hint">
+                <span>詳しく見る</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
             </div>
           </article>
         </div>
       </div>
     </div>
 
-    <!-- 写真ギャラリーセクション -->
+    <!-- 写真ギャラリー -->
     <div class="section-header" id="gallery">
       <span class="section-tag">Field Archives</span>
       <h2 class="section-title split">風景と素材</h2>
@@ -633,10 +918,10 @@
       </div>
     </div>
 
-    <!-- 会社概要 -->
-    <div class="section-header" id="about">
-      <span class="section-tag">Corporate Profile</span>
-      <h2 class="section-title split">会社概要</h2>
+    <!-- 運営会社概要 -->
+    <div class="section-header" id="company">
+      <span class="section-tag">Management Company</span>
+      <h2 class="section-title split">運営会社</h2>
       <span class="rule"></span>
     </div>
 
@@ -644,7 +929,7 @@
       <table class="profile-table">
         <tbody>
           <tr>
-            <th>会社名</th>
+            <th>運営会社</th>
             <td>合同会社くじやま (Kujiyama LLC)</td>
           </tr>
           <tr>
@@ -658,9 +943,10 @@
           <tr>
             <th>事業内容</th>
             <td>
+              くじやまフィールドの企画・運営<br>
               花卉・山野草の栽培およびドライフラワー・リース素材の加工・販売<br>
               原木きのこ（シイタケ・マイタケ・ナメコ）の栽培・販売<br>
-              アウトドアフィールド・バーベキュー場の企画・運営
+              アウトドアフィールド・バーベキュー場の運営
             </td>
           </tr>
           <tr>
@@ -682,10 +968,37 @@
     </div>
   </main>
 
+  <!-- 上下シャッター ポップアップウィンドウ（モーダル） -->
+  <div class="shutter-modal" id="shutterModal" aria-hidden="true" role="dialog">
+    <div class="shutter-blade-top"></div>
+    <div class="shutter-blade-bottom"></div>
+    
+    <div class="modal-container">
+      <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="閉じる">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      
+      <div class="modal-tag" id="modalTag">ABOUT</div>
+      <h3 class="modal-title" id="modalTitle">タイトル</h3>
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="モーダル画像">
+      </div>
+      <div class="modal-body-text" id="modalBody">本文</div>
+      
+      <div class="modal-cta-box">
+        <span style="font-size:0.85rem; color:#b9c8ad;" id="modalCtaNote">ご予約や素材の仕入れなど、お気軽にお問い合わせください。</span>
+        <a href="mailto:info@kujiyama.com" class="modal-cta-btn" id="modalCtaBtn">
+          <span id="modalCtaText">お問い合わせ・相談</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- フッター -->
   <footer id="footer">
-    <div class="foot-word" id="footWord" aria-hidden="true">KUJIYAMA</div>
-    <p>&copy; 2026 KUJIYAMA LLC. All Rights Reserved.</p>
+    <div class="foot-word" id="footWord" aria-hidden="true">KUJIYAMA FIELD</div>
+    <p>&copy; 2026 KUJIYAMA FIELD / 合同会社くじやま. All Rights Reserved.</p>
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -706,6 +1019,109 @@
       get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
       set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
     };
+
+    /* ============ モーダル（ポップアップ）データ定義 ============ */
+    const MODAL_DATA = {
+      'about-field': {
+        tag: 'KUJIYAMA PHILOSOPHY',
+        title: 'くじやまとは',
+        image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80',
+        body: `「くじやまフィールド」は、岩手県久慈市夏井町鳥谷の静寂な山林に根ざした、自然共生型のアウトドア＆ボタニカル拠点です。
+
+この地は、古くから厳しい冬と豊かな春・夏の恵みを繰り返してきた、力強い北東北の自然そのもの。私たちは、山林を単に切り開いて人工的な施設を作るのではなく、もともとそこに息づく木々、野草、菌類、そして起伏ある地形を尊重しながら、手作業でフィールドを整えてきました。
+
+「くじやまキャンプ＆BBQ」による野生の開放感、
+「くじやまフラワー＆ボタニカル」が届ける草木の造形美、
+「くじやま原木きのこ」がもたらす大地の深みある味覚。
+
+都会の喧騒から離れ、土を踏みしめ、風の音を聞き、大地の鼓動を直に味わう場。それが「くじやまフィールド」です。`,
+        ctaText: 'フィールドについて問い合わせる',
+        ctaLink: 'mailto:info@kujiyama.com?subject=くじやまフィールドについてのお問い合わせ'
+      },
+      'camp-bbq': {
+        tag: 'CATEGORY 01',
+        title: 'くじやまキャンプ＆BBQ',
+        image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1200&q=80',
+        body: `赤松の木立に囲まれた広大なプライベート空間で、ゆったりとした時間を過ごすアウトドア＆バーベキュー場です。
+
+一般的な区画整備されたキャンプ場とは異なり、森の地形や自生植物の息吹をダイレクトに感じられるサイト設計を進めています。鳥の声や木々の擦れ合う音に耳を傾けながら、家族や仲間と焚き火を囲み、地元・久慈の豊かな山の幸・海の幸を豪快にグリル。
+
+心地よい風が抜ける木陰で、日常を忘れ、五感を研ぎ澄ます特別なアウトドア体験をお楽しみいただけます。`,
+        ctaText: '利用・見学について相談する',
+        ctaLink: 'mailto:info@kujiyama.com?subject=くじやまキャンプ＆BBQについて'
+      },
+      'flower-botanical': {
+        tag: 'CATEGORY 02',
+        title: 'くじやまフラワー＆ボタニカル',
+        image: 'https://images.unsplash.com/photo-1508615039623-a25605d2b022?auto=format&fit=crop&w=1200&q=80',
+        body: `大地に根ざした野性味と、繊細な美しさを兼ね備えた花卉・ボタニカル素材の栽培および作品づくりを行っています。
+
+アナベル、スモークツリー、各種ハーブなどのドライフラワー向き植物をはじめ、山野に自生する山葡萄（ヤマブドウ）や葛（クズ）、クマヤナギなどの天然の蔓（ツル）を手作業で採取し、オリジナルのリース土台やスワッグを制作。
+
+自然が生み出した歪みや枝ぶりをそのまま活かしたクラフト素材は、店舗ディスプレイや暮らしを彩るインテリアとして高い評価をいただいています。山苗や素材の卸販売・オーダーメイドも承っております。`,
+        ctaText: '素材・作品について問い合わせる',
+        ctaLink: 'mailto:info@kujiyama.com?subject=くじやまフラワー＆ボタニカルについて'
+      },
+      'mushrooms': {
+        tag: 'CATEGORY 03',
+        title: 'くじやま原木きのこ',
+        image: 'https://images.unsplash.com/photo-1543158266-0066955047b1?auto=format&fit=crop&w=1200&q=80',
+        body: `北東北・久慈の清らかな空気と冷涼な気候のもと、厳選された広葉樹の原木を使って栽培する本物のきのこたち。
+
+効率を重視する菌床栽培とは異なり、原木栽培は菌糸が木全体に行き渡るまで1年〜2年の年月を要します。自然の雨水と木漏れ日だけでじっくりと育まれたシイタケ、マイタケ、ナメコは、肉厚で歯ごたえが良く、噛みしめるほどに凝縮された森の滋味が口いっぱいに広がります。
+
+自然のリズムに合わせた旬の収穫期に、新鮮な原木きのこをお届けします。`,
+        ctaText: '原木きのこの予約・購入相談',
+        ctaLink: 'mailto:info@kujiyama.com?subject=くじやま原木きのこについて'
+      }
+    };
+
+    /* ============ 上下シャッターモーダル制御 ============ */
+    const modal = $('#shutterModal');
+    const modalTag = $('#modalTag'), modalTitle = $('#modalTitle'), modalImg = $('#modalImg'), modalBody = $('#modalBody');
+    const modalCtaBtn = $('#modalCtaBtn'), modalCtaText = $('#modalCtaText');
+    const closeBtn = $('#modalCloseBtn');
+
+    function openModal(key) {
+      const data = MODAL_DATA[key];
+      if (!data) return;
+
+      modalTag.textContent = data.tag;
+      modalTitle.textContent = data.title;
+      modalImg.src = data.image;
+      modalBody.textContent = data.body;
+      modalCtaText.textContent = data.ctaText;
+      modalCtaBtn.href = data.ctaLink;
+
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('locked');
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('locked');
+    }
+
+    // トリガー登録
+    $$('[data-open-modal]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const key = el.dataset.openModal;
+        openModal(key);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.classList.contains('shutter-blade-top') || e.target.classList.contains('shutter-blade-bottom')) {
+        closeModal();
+      }
+    });
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
 
     /* ============ 季節で木漏れ日の色が変わる ============ */
     (function season() {
@@ -728,7 +1144,6 @@
       }; 
     }
 
-    // 繊細でフラットに重なり合う松傘（クラスタ）の描画
     function pineCrown(cx, cy, rx, ry, seedR) {
       const f = n => n.toFixed(1);
       const topY = cy - ry * 0.45;
@@ -736,7 +1151,6 @@
       const leftX = cx - rx;
       const rightX = cx + rx;
       const tilt = (seedR() - 0.5) * (rx * 0.18);
-      // 上面は緩やかなドーム、下面は軽く波打つ雲状
       return ` M${f(leftX)} ${f(cy + tilt)} C${f(cx - rx * 0.5)} ${f(topY + tilt * 0.5)} ${f(cx + rx * 0.5)} ${f(topY - tilt * 0.5)} ${f(rightX)} ${f(cy - tilt)} C${f(cx + rx * 0.4)} ${f(botY - tilt * 0.3)} ${f(cx - rx * 0.4)} ${f(botY + tilt * 0.3)} ${f(leftX)} ${f(cy + tilt)} Z`;
     }
 
@@ -751,27 +1165,22 @@
       while (x < 1490) {
         const w = minW + r() * (maxW - minW);
         const h = minH + r() * (maxH - minH);
-        const sway = (r() - 0.5) * (w * 0.5); // 幹の傾き
+        const sway = (r() - 0.5) * (w * 0.5);
         const topX = x + w * 0.5 + sway;
         const topY = base - h;
         const trunkW = 3 + r() * 3.5;
 
-        // 幹の曲がり（ベジェ曲線）
         const bendX = x + w * 0.5 + sway * 0.4 + (r() - 0.5) * 12;
         const bendY = base - h * 0.55;
 
         foliage += ` M${f(x + w * 0.5 - trunkW)} ${base} Q${f(bendX - trunkW * 0.6)} ${f(bendY)} ${f(topX - trunkW * 0.3)} ${f(topY + 10)} L${f(topX + trunkW * 0.3)} ${f(topY + 10)} Q${f(bendX + trunkW * 0.6)} ${f(bendY)} ${f(x + w * 0.5 + trunkW)} ${base} Z`;
-
-        // 枝葉クラスタ：最頂部
         foliage += pineCrown(topX, topY, w * 0.46, h * 0.16, r);
 
-        // 2段目（主枝）
         const side1 = r() > 0.5 ? 1 : -1;
         const b1X = topX + side1 * (w * 0.36);
         const b1Y = topY + h * 0.28;
         foliage += pineCrown(b1X, b1Y, w * 0.38, h * 0.14, r);
 
-        // 3段目（逆側の低層枝）
         if (h > (minH + maxH) * 0.48) {
           const b2X = topX - side1 * (w * 0.32);
           const b2Y = topY + h * 0.46;
@@ -786,12 +1195,16 @@
       return ground + foliage;
     }
 
-    // 奥の赤松（密度高め・繊細）と手前の赤松（大きくダイナミック）
     $('#tree1').setAttribute('d', generatePineForest(55, 240, 65, 125, 45, 80));
     $('#tree2').setAttribute('d', generatePineForest(108, 272, 95, 175, 70, 115));
 
     /* ============ トースト ============ */
-    const toastEl = $('#toast');     let toastTimer;     function toast(msg) {       toastEl.textContent = msg; toastEl.classList.add('show');       clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2600);     }      /* ============ 文字分割 ============ */     function splitChars(rootEl) {       let i = 0;       (function walk(node) {         [...node.childNodes].forEach(n => {           if (n.nodeType === 3) {             const frag = document.createDocumentFragment();             [...n.textContent].forEach(c => {               if (c.trim() === '') { frag.append(c); return; }               const w = document.createElement('span'); w.className = 'cw'; w.setAttribute('aria-hidden', 'true');               const s = document.createElement('span'); s.className = 'ch'; s.textContent = c; s.style.setProperty('--i', i++);               w.append(s); frag.append(w);             });             n.replaceWith(frag);           } else if (n.nodeType === 1 && n.tagName !== 'BR') walk(n);         });       })(rootEl);     }     $$('.split').forEach(el => { el.setAttribute('aria-label', el.textContent.trim()); splitChars(el); });
+    const toastEl = $('#toast');     let toastTimer;     function toast(msg) {       toastEl.textContent = msg; toastEl.classList.add('show');       clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2600);     }      /* ============ 文字分割 ============ */     function splitChars(rootEl) {       let i = 0;       (function walk(node) {         [...node.childNodes].forEach(n => {           if (n.nodeType === 3) {             const frag = document.createDocumentFragment();             [...n.textContent].forEach(c => {               if (c.trim() === '') { frag.append(c); return; }               const w = document.createElement('span'); w.className = 'cw'; w.setAttribute('aria-hidden', 'true');               const s = document.createElement('span'); s.className = 'ch'; s.textContent = c; s.style.setProperty('--i', i++);               w.append(s); frag.append(w);             });             n.replaceWith(frag);
+          } else if (n.nodeType === 1 && n.tagName !== 'BR') walk(n);
+        });
+      })(rootEl);
+    }
+    $$('.split').forEach(el => { el.setAttribute('aria-label', el.textContent.trim()); splitChars(el); });
 
     /* ============ パスワード認証 ============ */
     const CORRECT_PW = "kujiyama2026";
@@ -820,7 +1233,7 @@
     pwInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
     if (store.get('kujiyama_authorized') === 'true') { lock.style.display = 'none'; lockRun = false; startIntro(350); }
 
-    /* ============ ロック画面の花粉 ============ */
+    /* ============ ロック画面のパーティクル ============ */
     (function lockCanvas() {
       const cv = $('#lock-canvas'), c = cv.getContext('2d');
       let w, h, dots = [];
@@ -903,7 +1316,7 @@
       if (fine) dotEl.style.transform = `translate(${cxp}px,${cyp}px)`;
     }, { passive: true });
     document.addEventListener('pointerover', e => {
-      if (fine) ringEl.classList.toggle('hover', !!(e.target.closest && e.target.closest('a,button,.modern-card,.gallery-item,.magnetic')));
+      if (fine) ringEl.classList.toggle('hover', !!(e.target.closest && e.target.closest('a,button,.modern-card,.gallery-item,.magnetic,.open-modal-trigger')));
     });
     document.addEventListener('pointerdown', e => {
       mouse.down = true; mouse.downAt = performance.now(); ringEl.classList.add('down');
@@ -1011,7 +1424,7 @@
     });
 
     const baseTitle = document.title;
-    document.addEventListener('visibilitychange', () => { document.title = document.hidden ? '森でお待ちしています | KUJIYAMA' : baseTitle; });
+    document.addEventListener('visibilitychange', () => { document.title = document.hidden ? '森でお待ちしています | KUJIYAMA FIELD' : baseTitle; });
 
     /* ============ メインアニメーションループ ============ */
     const parallaxEl = $('#heroParallax'), ridgeEls = $$('.ridges svg');
